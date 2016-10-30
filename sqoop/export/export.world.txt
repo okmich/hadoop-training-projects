@@ -1,0 +1,2 @@
+-- Export tables
+sqoop-export --connect jdbc:mysql://quickstart:3306/handson_class --username root --export-dir /user/cloudera/rawdata/handson_train/nyse_dividends  --table nyse_dividends --fields-terminated-by ',' -P

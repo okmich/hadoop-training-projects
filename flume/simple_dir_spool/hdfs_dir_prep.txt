@@ -1,0 +1,1 @@
+hdfs dfs -mkdir -p /user/cloudera/rawdata/handson_train/flume/simple_watch_dir

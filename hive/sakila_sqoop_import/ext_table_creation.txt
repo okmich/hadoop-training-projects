@@ -1,0 +1,19 @@
+--creating a hive table for payment import
+create external table payment (payment_id int, rental_id int, amount float, payment_date datetime, last_update datetime, customer_id int, customer_name string,
+	staff_id int, staff_name string
+)
+row format delimited
+fields terminated by ','
+location '/user/cloudera/output/handson_train/sqoop/sakila/payment';
+
+
+
+--creating a hive table for the film
+create external table film (film_id int, title string, description string, release_year string, language_id int, original_language_id int, rental_duration string,
+rental_rate string, length int, replacement_cost string, rating string, special_features array<string>, last_update timestamp, language string,
+category map<int,string>, actors map<int, string>)
+row format delimited
+fields terminated by ','
+collection items terminated by '|'
+map keys terminated by '='
+location '/user/cloudera/output/handson_train/sqoop/sakila/film';

@@ -1,0 +1,15 @@
+##--sqoop cli to import payments
+sqoop-import --connect jdbc:mysql://quickstart:3306/sakila --username root \
+--query "SELECT p.payment_id, p.rental_id, p.amount, p.payment_date, p.last_update, c.customer_id, concat(c.first_name, ' ', c.last_name) customer_name, \
+		s.staff_id, concat(s.first_name, ' ', s.last_name) staff_name \
+		FROM payment p  join customer c on c.customer_id = p.customer_id  join staff s on s.staff_id = p.staff_id \
+		join rental r on r.rental_id = p.rental_id where \$CONDITIONS" \
+--target-dir /user/cloudera/output/handson_train/sqoop/sakila/payment  \
+--split-by payment_id -m 2\
+-P
+
+
+##--sqoop cli to import view "
+sqoop-import --connect jdbc:mysql://quickstart:3306/sakila --username root \
+--table v_film --target-dir /user/cloudera/output/handson_train/sqoop/sakila/film  --compress \
+-m 1 --split-by film_id -P

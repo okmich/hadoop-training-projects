@@ -1,0 +1,2 @@
+hdfs dfs -mkdir -p /user/cloudera/rawdata/handson_train/nyse_dividends
+hdfs dfs -put NASDAQ_daily_prices_A.csv /user/cloudera/rawdata/handson_train/nyse_dividends

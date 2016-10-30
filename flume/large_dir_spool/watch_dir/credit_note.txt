@@ -1,0 +1,1 @@
+credit to https://github.com/eliangcs/pystock-data

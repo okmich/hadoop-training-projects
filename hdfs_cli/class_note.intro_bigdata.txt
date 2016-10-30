@@ -1,0 +1,70 @@
+Hadoop 
+	HDFS (hadoop distributed file system)
+		Name node
+			master daemon storage
+			stores the metadata of the storage capacity of the cluster
+			Keep information of all files in the cluster
+			It constantly receive health pings from the data nodes
+			writes/read the properties/metadata of the file for write/read request
+
+			Does not store data
+			All metadata are store in memory
+
+		Data node
+		
+		
+		Secondary name node
+			Acts as a backup for the name node
+	
+
+	
+	
+	
+	MapReduce (YARN)
+		ResoureManager
+
+		NodeManager
+
+		ApplicationMaster
+
+		Container
+
+		Scheduler
+
+
+
+
+
+Data nodes
+	store blocks of data
+		reading/writing of data
+
+
+Installation mode
+=====================
+Standalone
+Pseudo-distributed
+Fully distributed 
+
+#list directories
+hdfs dfs -ls /
+hdfs dfs -ls /sample_data
+hdfs dfs -lsr /sample_data
+
+
+#create directories
+hdfs dfs -mkdir ouput #creates the output dir in our hdfs home directory
+hdfs dfs -mkdir -p /user/okmich20/rawdata/sqoop 
+
+#to read the content of a file 
+hdfs dfs -cat /sample_data/PoT_Misc1/CiscoLogs.txt
+hdfs dfs -tail /sample_data/dswb_airline_test/airline_test.csv
+
+#
+hdfs dfs -get /sample_data/dswb_airline_test/airline_test.csv ./
+
+hdfs dfs -mkdir rawdata/airline
+hdfs dfs -put airline_test.csv /user/okmich20/rawdata/airline
+
+read more of hdfs cli 
+http://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-common/FileSystemShell.html

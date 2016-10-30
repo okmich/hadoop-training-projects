@@ -1,0 +1,32 @@
+## Sqoop: World database
+## ===============
+
+## the compulsory generic argument for sqoop
+sqoop  --connect jdbc:mysql://quickstart:3306/world --username root -P
+
+##--sqoop evaluate
+sqoop-eval -e "show databases"  --connect jdbc:mysql://quickstart:3306/world --username root -P
+
+##-- list tables in the particular database
+sqoop-list-tables --connect jdbc:mysql://quickstart:3306/world --username root -P
+
+##-- list dabases in the server
+sqoop-list-databases --connect jdbc:mysql://quickstart:3306/world --username root -P
+
+## import a table with defaults
+sqoop-import --connect jdbc:mysql://quickstart:3306/world --username root --target-dir /user/cloudera/output/handson_train/sqoop/city -table city --password cloudera
+
+## import a table with defaults with a single mapper
+sqoop-import --connect jdbc:mysql://quickstart:3306/world --username root --target-dir /user/cloudera/output/handson_train/sqoop/city_singlemap -table city --password cloudera --num-mappers 1
+
+## import a table with defaults with a single mapper and with tab-delimited records
+sqoop-import --connect jdbc:mysql://quickstart:3306/world --username root --target-dir /user/cloudera/output/handson_train/sqoop/city_singlemap_tabdelimited -table city --num-mappers 1 --fields-terminated-by '\t' -P
+
+##-- Import table with different format (parquet file) into a single file
+sqoop-import --connect jdbc:mysql://quickstart:3306/world --username root --target-dir /user/cloudera/output/handson_train/sqoop/city_singlemap_parquet --table city --as-parquetfile --mapreduce-job-name SqoopJobParquet -m 1 -P 
+
+##-- Import table with where clause and nondefault text file format
+sqoop-import --connect jdbc:mysql://quickstart:3306/world --username root --target-dir /user/cloudera/output/handson_train/sqoop/city_uscan --table city --mapreduce-job-name SqoopJobWhere --where "CountryCode = 'USA' or CountryCode = 'CAN'" --fields-terminated-by '\t'  -m 1 -P 
+
+##-- Import all tables with avro format
+sqoop-import-all-tables --connect jdbc:mysql://quickstart:3306/world --username root --warehouse-dir /user/cloudera/output/handson_train/sqoop/world --mapreduce-job-name SqoopJobAllWorldTables --as-avrodatafile  --password cloudera
