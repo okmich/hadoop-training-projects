@@ -1,0 +1,23 @@
+Build a flume agent that will spool certain contents of the watch_dir to hdfs. The requirements are as follows;
+
+Output Dir
+==============
+/user/cloudera/output/handson_train/flume/pystock_data
+
+Files to transfer
+============
+The watch_dir contains 4 categories of files
+	1. Simple notes. Eg. credit_note.txt for credit to data source.
+	2. prices_xxxxxxxx.csv - end of date price for stock. xxxxxxxx represents yyyy mm dd
+	3. reports_xxxxxxxx.csv - any report for stocks for that day. xxxxxxxx represents yyyy mm dd
+	4. symbols_xxxxxxxx.txt - symbols traded for the day. xxxxxxxx represents yyyy mm dd
+
+Note: This project is only interested in the prices_xxxxxxxx.csv files. Other files MUST be ignored in the file streaming configuration.
+
+File Format
+============
+The format of the file must be TEXT and content should be readable by the human eyes.
+
+File content
+============
+Each file size copied to hdfs must not exceed 64MB or file must rollover after every 10mins.
