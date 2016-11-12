@@ -30,6 +30,6 @@ movieId_ratings = FOREACH grouped_ratings GENERATE group as movieId, (int)COUNT(
 movie_rating_jn = JOIN movieId_ratings BY movieId, movie BY movieId;
 movie_rating = FOREACH movie_rating_jn GENERATE movie.movieId as movieId, movie.title, movieId_ratings.tot_rating as total_rating, movieId_ratings.num_rating as num_ratings, movieId_ratings.avg_rating as avg_rating;
 
-sorted_ratings = ORDER movie_rating BY num_rating DESC, avg_rating DESC;
+sorted_ratings = ORDER movie_rating BY num_ratings DESC, avg_rating DESC;
 
 STORE movie_rating INTO '/user/cloudera/output/handson_train/pig/movielens/movies_rating_analysis';
