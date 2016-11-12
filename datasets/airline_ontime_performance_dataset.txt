@@ -1,17 +1,14 @@
-# Airline on-time performance dataset from 2005 to 2008 (4 zipped files)
+# Airline on-time performance dataset from 2007 to 2008 (2 zipped files)
 # ======================================================================
-wget http://stat-computing.org/dataexpo/2009/2005.csv.bz2
-wget http://stat-computing.org/dataexpo/2009/2006.csv.bz2
 wget http://stat-computing.org/dataexpo/2009/2007.csv.bz2
 wget http://stat-computing.org/dataexpo/2009/2008.csv.bz2
 
-bzip2 -d 2005.csv.bz2
-bzip2 -d 2006.csv.bz2
+
+hdfs dfs -mkdir -p /user/cloudera/rawdata/handson_train/airline_performance/flights
+
 bzip2 -d 2007.csv.bz2
 bzip2 -d 2008.csv.bz2
 
-hdfs dfs -moveFromLocal 2005.csv /user/cloudera/rawdata/handson_train/airline_performance/flights
-hdfs dfs -moveFromLocal 2006.csv /user/cloudera/rawdata/handson_train/airline_performance/flights
 hdfs dfs -moveFromLocal 2007.csv /user/cloudera/rawdata/handson_train/airline_performance/flights
 hdfs dfs -moveFromLocal 2008.csv /user/cloudera/rawdata/handson_train/airline_performance/flights
 

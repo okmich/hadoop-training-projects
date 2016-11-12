@@ -1,1 +1,1 @@
-Download the price_data.txt from https://drive.google.com/drive/folders/0B0MdkEsxQHAQeFB6WHMzWEx6eGM?usp=sharing
+# Download the price_data.txt from https://drive.google.com/open?id=0B0MdkEsxQHAQT08zRGh3UVhKRGc
