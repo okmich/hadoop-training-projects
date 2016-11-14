@@ -1,10 +1,16 @@
---== Project 4 - Processing NYSE trading data using Hive
+--== Project 4 - Processing NYSE trading data using Hive nyse_db
 -- In this project we will learn about Apache Hive - another popular processing framework. 
 -- We will be using Hive to process the NYSE trading data on daily price. 
 -- We will see the different file types and formats available 
 -- how to create and load data into Hive tables.
 
+hdfs dfs -mkdir -p /user/okmich20/hive/warehouse/nyse_db
+create database nyse_db
+location '/user/okmich20/hive/warehouse/nyse_db';
 
+-- load data [local] inpath '' into 
+-- insert overwrite table nasdaq_dprice
+-- select * from ext_nasdaq_dprice where exchange_name != 'exchange';
 
 
 
