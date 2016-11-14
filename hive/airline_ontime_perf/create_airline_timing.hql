@@ -125,3 +125,58 @@ select
 	lateaircraftdelay,
 	year
 from airline_timing ;
+
+
+-- create external table for airports
+create external table airports (
+    iata string, 
+    airport string, 
+    city string,
+    state string, 
+    country string, 
+    geolat float, 
+    geolong float
+)
+row format serde 'org.apache.hadoop.hive.serde2.OpenCSVSerde'
+with serdeproperties (
+   "separatorChar" = ",",
+   "quoteChar"     = "\"",
+   "escapeChar"    = "\\"
+)  
+stored as textfile
+location '/user/cloudera/rawdata/handson_train/airline_performance/airports';
+
+
+-- create external table for carriers
+create external table carriers (
+    cdde varchar(4), 
+    description varchar(30)
+)
+row format serde 'org.apache.hadoop.hive.serde2.OpenCSVSerde'
+with serdeproperties (
+   "separatorChar" = ",",
+   "quoteChar"     = "\"",
+   "escapeChar"    = "\\"
+)  
+stored as textfile
+location '/user/cloudera/rawdata/handson_train/airline_performance/carriers';
+
+-- create external table for plane information
+create external table plane_info (
+    tailnum varchar(4), 
+    type varchar(30),
+    manufacturer string,
+    issue_date varchar(16), 
+    model varchar(10), 
+    status varchar(10),
+    aircraft_type varchar(30),
+    pyear int
+)
+row format serde 'org.apache.hadoop.hive.serde2.OpenCSVSerde'
+with serdeproperties (
+   "separatorChar" = ",",
+   "quoteChar"     = "\"",
+   "escapeChar"    = "\\"
+)  
+stored as textfile
+location '/user/cloudera/rawdata/handson_train/airline_performance/plane_data';
