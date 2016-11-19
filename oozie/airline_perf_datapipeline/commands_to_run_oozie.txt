@@ -1,0 +1,16 @@
+hdfs dfs -mkdir /user/cloudera/oozie/handson_train/airline_ontime_perf
+
+hdfs dfs -put create_airline_timing.hql /user/cloudera/oozie/handson_train/airline_ontime_perf
+hdfs dfs -put airline_performan_data_processing.pig /user/cloudera/oozie/handson_train/airline_ontime_perf
+hdfs dfs -put workflow.xml /user/cloudera/oozie/handson_train/airline_ontime_perf
+
+
+export OOZIE_URL=http://quickstart:11000/oozie/
+
+oozie job -config job.properties -dryrun
+
+
+oozie job -config job.properties -run
+
+
+oozie job -info <job_ID>

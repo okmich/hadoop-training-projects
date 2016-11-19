@@ -1,0 +1,28 @@
+<workflow-app name='airline_data-wf' xmlns="uri:oozie:workflow:0.1">
+	<start to="DataPrep"/>
+	 <action name="DataPrep">
+        <pig>
+            <job-tracker>${jobTracker}</job-tracker>
+            <name-node>${namenode}</name-node>
+            <prepare>
+               <delete path="/user/cloudera/output/handson_train/pig/airline_time_performance/refactored"/>
+            </prepare>
+            <script>/user/cloudera/oozie/handson_train/airline_ontime_perf/airline_performan_data_processing.pig</script>
+        </pig>
+        <ok to="tableCreation"/>
+        <error to="errorOccured"/>
+    </action>
+    <action name="tableCreation">
+        <hive xmlns="uri:oozie:hive-action:0.2">
+            <job-tracker>${jobTracker}</job-tracker>
+            <name-node>${namenode}</name-node>
+            <script>/user/cloudera/oozie/handson_train/airline_ontime_perf/create_airline_timing.hql</script>
+        </hive>
+        <ok to="completed"/>
+        <error to="errorOccured"/>
+    </action>
+	<kill name="errorOccured">
+        <message>A failured occured somewhere, error message[${wf:errorMessage(wf:lastErrorNode())}]</message>
+    </kill>
+	<end name="completed" />
+</workflow-app>

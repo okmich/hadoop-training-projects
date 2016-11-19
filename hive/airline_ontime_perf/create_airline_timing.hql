@@ -77,7 +77,7 @@ select
 	nasdelay ,          
 	securitydelay    ,  
 	lateaircraftdelay 
-from airline_timing where year = 2007
+from airline_timing where year = 2007;
 
 -- droping a partition
 -- not that since this is an external table , the partition will be dropped from the hive metastore but will still be available on the distributed file system
@@ -180,3 +180,10 @@ with serdeproperties (
 )  
 stored as textfile
 location '/user/cloudera/rawdata/handson_train/airline_performance/plane_data';
+
+
+-- inserting into hdfs directory as text file with non-default delimiter
+insert overwrite directory '/user/cloudera/output/handson_train/hive/insrt_directory'
+row format delimited
+fields terminated by '::::'
+select * from airports limit  100;
