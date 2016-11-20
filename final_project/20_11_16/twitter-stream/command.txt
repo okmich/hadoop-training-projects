@@ -1,0 +1,3 @@
+hdfs dfs -mkdir -p /user/cloudera/output/handson_train/flume/tweets
+
+flume-ng agent --name TwitterAgent --conf-file twitter-stream-config-1.properties  --classpath flume-sources-1.0-SNAPSHOT.jar

@@ -1,0 +1,14 @@
+# create the flume destination directory on hdfs
+hdfs dfs -mkdir -p /user/cloudera/output/handson_train/flume/techJobTweet
+
+# run the flume agent
+flume-ng agent --name jobSearch --conf-file /home/cloudera/Classes/hadoop-training-projects/final_project_20_11_16/twitter-stream/live_demo.properties --classpath /home/cloudera/Classes/hadoop-training-projects/final_project_20_11_16/twitter-stream/flume-sources-1.0-SNAPSHOT.jar
+
+# we used avro-tools to extract the schema from the avro file
+avro-tools getschema part-m-00000.avro > twitter_jobs.avsc
+
+# creating a hdfs directory for hold the avro schema
+hdfs dfs -mkdir -p /user/cloudera/output/handson_train/pig/twitterjobs_avro_schema
+
+# loading the avro schema to hdfs
+hdfs dfs -put twitter_jobs.avsc /user/cloudera/output/handson_train/pig/twitterjobs_avro_schema
