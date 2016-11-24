@@ -1,5 +1,4 @@
--- find the two airports the shortest distance between them
-ports b 
+-- find the top 3 two airports with the shortest distance between them
 
 
 add jar file:/home/cloudera/Classes/hadoop-training-projects/hive/airline_ontime_perf/HiveSwarm-1.0-SNAPSHOT.jar;
@@ -11,16 +10,21 @@ create view airport_without_header as
 select * from airports where iata <> 'iata';
 
 
--- 
+-- query
 select from_airport, to_airport, MIN(dist) minimum_distance from 
 	(	select tbl1.airport from_airport, tbl2.airport to_airport, gps_distance_from(tbl1.geolat, tbl1.geolong, tbl2.geolat, tbl2.geolong ) dist from 
-		(select  iata, airport, geolong, geolat from airports where iata <> 'iata') tbl1
+		(select  iata, airport, geolong, geolat from airport_without_header) tbl1
 		full outer join 
-		(select  iata, airport, geolong, geolat from airports where iata <> 'iata') tbl2
+		(select  iata, airport, geolong, geolat from airport_without_header) tbl2
 	) v
-group by from_airport, to_airport;
+group by from_airport, to_airport
+order by 3 
+limit 3;
 
 
+-- some analytical query with the crime dataset
+-- download the dataset from https://drive.google.com/open?id=0B0MdkEsxQHAQU1BIMVJuM2twVW8
+-- download the scripts to prepare the hive database and tables from https://drive.google.com/drive/folders/0B0MdkEsxQHAQbjJtOHhMaEpuVUk?usp=sharing
 
 select method, count(1) from crime_incident group by method
 
