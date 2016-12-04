@@ -1,0 +1,7 @@
+# create a folder rawdata/handson_train/dec  in the cloudera hdfs home directory
+# this is where we will store all the downloaded data for this class
+hdfs dfs -mkdir -p /user/cloudera/rawdata/handson_train/dec
+
+# create a folder output/handson_train/dec  in the cloudera hdfs home directory
+# this is where we will store all the output of all application run for this class
+hdfs dfs -mkdir -p /user/cloudera/output/handson_train/dec

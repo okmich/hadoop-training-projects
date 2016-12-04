@@ -25,8 +25,20 @@ sqoop-import --connect jdbc:mysql://quickstart:3306/world --username root --targ
 ##-- Import table with different format (parquet file) into a single file
 sqoop-import --connect jdbc:mysql://quickstart:3306/world --username root --target-dir /user/cloudera/output/handson_train/sqoop/city_singlemap_parquet --table city --as-parquetfile --mapreduce-job-name SqoopJobParquet -m 1 -P 
 
+##-- Import table with different format (avro file) into a single file
+sqoop-import --connect jdbc:mysql://quickstart:3306/world --username root --target-dir /user/cloudera/output/handson_train/sqoop/city_singlemap_avro --table city --as-avrofile --mapreduce-job-name SqoopJobParquet -m 1 -P 
+
 ##-- Import table with where clause and text file with nondefault format (a text file delimited by \u001)
 sqoop-import --connect jdbc:mysql://quickstart:3306/world --username root --target-dir /user/cloudera/output/handson_train/sqoop/city_uscan --table city --mapreduce-job-name SqoopJobWhere.MARKETING.C52093452 --where "CountryCode = 'USA' or CountryCode = 'CAN'" --fields-terminated-by '\0001'  -m 1 -P 
+
+##-- Import table with where clause with avro format using a password file
+## password file was created with the following command
+## echo "cloudera" > passwordfile
+## hdfs dfs -moveFromLocal passwordfile /user/cloudera
+## hdfs dfs -chmod 600 /user/cloudera/passwordfile
+## make sure that there is not carriage return character after the cloudera password in the file
+sqoop-import --connect jdbc:mysql://quickstart.cloudera:3306/world --username root \
+--table city --target-dir /user/cloudera/output/handson_train/dec/sqoop/cities__north_america --num-mappers 1  --as-parquetfile --where "countryCode = 'USA' or countryCode = 'CAN' or countryCode = 'MEX'" --password-file /user/cloudera/passwordfile
 
 ##-- Import all tables with avro format
 sqoop-import-all-tables --connect jdbc:mysql://quickstart:3306/world --username root --warehouse-dir /user/cloudera/output/handson_train/sqoop/world --mapreduce-job-name SqoopJobAllWorldTables --as-avrodatafile  --password cloudera

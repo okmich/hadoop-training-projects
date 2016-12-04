@@ -1,0 +1,21 @@
+Sqoop  - SQL to Hadoop (import)
+		 Hadoop to SQL (export)
+
+
+check sales vs online experience
+			existing customer
+
+
+	sales  ---  ecommerce - mysql, microsoft sql, postgres, oracle, db2, sybase
+									SQOOP
+	clickstream
+		   --- 	log files
+
+		   --- buy
+		   --- performance 
+		   							FLUME
+
+
+structured from databases
+join them with
+unstructed from the log files

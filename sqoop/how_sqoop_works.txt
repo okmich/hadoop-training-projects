@@ -1,0 +1,22 @@
+jdbc
+
+	how does sqoop work
+		import
+			jdbc - 
+				import  - select statements
+
+			MapReduce
+				- multiple parallel map task
+
+			write files to hdfs
+
+
+		export
+			read the files from hdfs
+
+			MapReduce
+				- multiple parallel map task
+			
+			jdbc - 
+				export	- insert/update statement
+
