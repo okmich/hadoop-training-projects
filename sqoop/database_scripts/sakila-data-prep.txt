@@ -1,0 +1,12 @@
+# download the sakila database creation script
+wget https://raw.githubusercontent.com/okmich/hadoop-training-projects/master/sqoop/database_scripts/sakila-db.tar
+
+#extract the files
+tar -fvx sakila-db.tar
+
+# enter the mysql shell 
+mysql -u root -p
+
+# inside the mysql client shell, execute both commands
+source sakila-db/sakila-schema.sql
+source sakila-db/sakila-data.sql

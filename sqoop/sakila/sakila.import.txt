@@ -1,14 +1,3 @@
-## import all films from sakila db to hdfs compressing the output
-sqoop-import --connect jdbc:mysql://quickstart:3306/sakila --username root \
---table v_film --target-dir /user/cloudera/output/handson_train/sqoop/sakila/film  --compress \
--m 1 --split-by film_id -P
-
-## import all films from sakila db to hdfs compressing the output using bzip2 code
-sqoop-import --connect jdbc:mysql://quickstart:3306/sakila --username root \
---table v_film --target-dir /user/cloudera/output/handson_train/sqoop/sakila/film_bzip  --compress \
---compression-codec bzip2 -m 1 --split-by film_id -P
-
-
 ## import all payments from sakilar to hdfs
 sqoop-import --connect jdbc:mysql://quickstart:3306/sakila --username root \
 --query "SELECT p.payment_id, p.rental_id, p.amount, p.payment_date, p.last_update, c.customer_id, concat(c.first_name, ' ', c.last_name) customer_name, \
@@ -18,3 +7,13 @@ sqoop-import --connect jdbc:mysql://quickstart:3306/sakila --username root \
 --target-dir /user/cloudera/output/handson_train/sqoop/sakila/payment  \
 --split-by payment_id -m 2 \
 -P
+
+## import all films (denormalized) from sakila db to hdfs compressing the output
+sqoop-import --connect jdbc:mysql://quickstart:3306/sakila --username root \
+--table v_film --target-dir /user/cloudera/output/handson_train/sqoop/sakila/film  --compress \
+-m 1 --split-by film_id -P
+
+## import all films from sakila db to hdfs compressing the output using bzip2 code
+sqoop-import --connect jdbc:mysql://quickstart:3306/sakila --username root \
+--table v_film --target-dir /user/cloudera/output/handson_train/sqoop/sakila/film_bzip  --compress \
+--compression-codec bzip2 -m 1 --split-by film_id -P
