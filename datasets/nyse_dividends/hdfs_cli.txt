@@ -1,0 +1,17 @@
+hdfs dfs -mkdir -p /user/cloudera/rawdata/handson_train/nyse
+
+hdfs dfs -copyFromLocal NASDAQ_dividends_A.csv /user/cloudera/rawdata/handson_train/nyse/
+hdfs dfs -put NASDAQ_dividends_C.csv /user/cloudera/rawdata/handson_train/nyse/
+
+
+for ibm cloud users
+====================
+wget https://raw.githubusercontent.com/okmich/hadoop-training-projects/master/datasets/nyse_dividends/NASDAQ_dividends_A.csv
+
+wget https://raw.githubusercontent.com/okmich/hadoop-training-projects/master/datasets/nyse_dividends/NASDAQ_dividends_C.csv
+
+
+hdfs dfs -mkdir -p /user/okmich20/rawdata/handson_train/nyse
+
+hdfs dfs -copyFromLocal NASDAQ_dividends_A.csv /user/okmich20/rawdata/handson_train/nyse/
+hdfs dfs -put NASDAQ_dividends_C.csv /user/okmich20/rawdata/handson_train/nyse/

@@ -8,6 +8,7 @@ join category c on c.category_id = fc.category_id
 left join film_actor fa on fa.film_id = f.film_id
   left join actor a on a.actor_id = fa.actor_id
 group by f.film_id
+
 -- a query to be used as is by sqoop
 SELECT p.payment_id, p.rental_id, p.amount, p.payment_date, p.last_update, c.customer_id, concat(c.first_name, ' ', c.last_name) customer_name,
 s.staff_id, concat(s.first_name, ' ', s.last_name) staff_name
