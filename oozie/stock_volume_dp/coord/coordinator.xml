@@ -10,7 +10,7 @@
                 </property>
                 <property>
                     <name>nameNode</name>
-                    <value>${nameNode}</value>
+                    <value>${namenode}</value>
                 </property>
             </configuration>
         </workflow>

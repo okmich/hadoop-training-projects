@@ -8,7 +8,7 @@
             <prepare>
                <delete path="/user/cloudera/output/handson_train/pig/nasdaq_stock_volume"/>
             </prepare>
-            <script>/user/cloudera/oozie/stock_volume_job/script/stock_total_volume_analysis.pig</script>
+            <script>/user/cloudera/oozie/stock_volume_job/wf/script/stock_total_volume_analysis.pig</script>
         </pig>
         <ok to="jobDone"/>
         <error to="errorOccured"/>
