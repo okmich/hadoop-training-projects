@@ -1,0 +1,21 @@
+<workflow-app name="stockVolume-wf" xmlns="uri:oozie:workflow:0.1">
+    <start to="stockVolumePigAction"/>
+
+    <action name="stockVolumePigAction">
+        <pig>
+            <job-tracker>${jobTracker}</job-tracker>
+            <name-node>${namenode}</name-node>
+            <prepare>
+               <delete path="/user/cloudera/output/handson_train/pig/nasdaq_stock_volume"/>
+            </prepare>
+            <script>/user/cloudera/oozie/stock_volume_job/script/stock_total_volume_analysis.pig</script>
+        </pig>
+        <ok to="jobDone"/>
+        <error to="errorOccured"/>
+    </action>
+
+    <kill name="errorOccured">
+        <message>wf:lastErrorNode()</message>
+    </kill>
+     <end name="jobDone"/>
+</workflow-app>

@@ -1,7 +1,17 @@
--- find the top 3 two airports with the shortest distance between them
+-- simple multiple join
+select flightnum, year, month, dayofmonth, dayofweek, c.description, f.tailnum, p.aircraft_type,
+	CONCAT(a.airport, ' ', a.city, ', ', a.state, ', ', a.country ) origin, 
+	CONCAT(b.airport, ' ', b.city, ', ', b.state, ', ', b.country ) dest 
+from flights f 
+	join carriers c on f.uniquecarrier = c.cdde
+	join airports a on f.origin = a.iata
+	join airports b on f.dest = b.iata
+	join plane_info p on p.tailnum = f.tailnum;
 
 
+-- find the top 3 airports pairs with the shortest distance between them
 add jar file:/home/cloudera/Classes/hadoop-training-projects/hive/airline_ontime_perf/HiveSwarm-1.0-SNAPSHOT.jar;
+
 
 create temporary function gps_distance_from as 'com.livingsocial.hive.udf.gpsDistanceFrom';
 
