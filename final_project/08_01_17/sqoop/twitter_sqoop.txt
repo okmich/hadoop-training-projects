@@ -1,0 +1,2 @@
+sqoop-export --connect jdbc:mysql://quickstart:3306/handson_class --username root \
+--export-dir /user/cloudera/output/handson_train/flume/temp_avro --mapreduce-job-name SqoopExportingTwitterJobs --table twitter_job --password cloudera
