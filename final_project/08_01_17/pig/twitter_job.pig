@@ -12,14 +12,14 @@ DEFINE getHashTagText com.dezyre.hadooptraining.udf.HashTextExtractor();
  
 raw_tweets = LOAD '$techJobTweetHDFSPath/$year/$month/$day/$hour' USING com.twitter.elephantbird.pig.load.JsonLoader('-nestedLoad') as (json:map[]);
 
-featured_tweets = FOREACH raw_tweets GENERATE (long)json#'id' As id, (long)json#'timestamp_ms' As ts, (chararray)json#'lang' As twtLang, (chararray)json#'created_at' As created_at, (chararray)json#'text' As tweetText, extractHref((chararray)json#'text') As url, extractHref((chararray)json#'source') As source, getHashTagText(json#'entities'#'hashtags') As hashtags, (chararray)json#'user'#'location' As agentLocation, (chararray)json#'user'#'description' As agentDescription, (chararray)json#'user'#'name' As agentName, (chararray)json#'user'#'profile_image_url' As agentImageUrl;
+featured_tweets = FOREACH raw_tweets GENERATE (long)json#'id' AS id, (long)json#'timestamp_ms' AS ts, (chararray)json#'lang' AS twtlang, (chararray)json#'created_at' AS created_at, (chararray)json#'text' AS tweet_text, extractHref((chararray)json#'text') AS url, extractHref((chararray)json#'source') AS source, getHashTagText(json#'entities'#'hashtags') AS hashtags, (chararray)json#'user'#'location' AS agent_location, (chararray)json#'user'#'description' AS agent_desc, (chararray)json#'user'#'name' AS agent_name, (chararray)json#'user'#'profile_image_url' AS agent_image_url, (int)json#'user'#'followers_count' AS follower_count;
 
-en_tweets = FILTER featured_tweets BY twtLang == 'en';
-fr_tweets = FILTER featured_tweets BY twtLang == 'fr';
+--en_tweets = FILTER featured_tweets BY twtLang == 'en';
+--fr_tweets = FILTER featured_tweets BY twtLang == 'fr';
 
-filtered_tweets = UNION en_tweets,fr_tweets;
+--filtered_tweets = UNION en_tweets,fr_tweets;
 
-STORE filtered_tweets into 'twitter_job.job_tweets' USING org.apache.hive.hcatalog.pig.HCatStorer();
+STORE featured_tweets INTO 'twitter_job.job_tweets' USING org.apache.hive.hcatalog.pig.HCatStorer();
 
 
 

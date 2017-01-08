@@ -1,0 +1,2 @@
+# the shell command used to startup pig grunt shell with parameters for our pig script
+pig -useHCatalog -p year=2017 -p month=01 -p day=08 -p hour=07 -p techJobTweetHDFSPath=/user/cloudera/output/handson_train/flume/techJobTweet

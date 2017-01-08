@@ -8,13 +8,13 @@
     "name" : "ts",
     "type" : [ "null", "long" ]
   }, {
-    "name" : "twtLang",
+    "name" : "twtlang",
     "type" : [ "null", "string" ]
   }, {
     "name" : "created_at",
     "type" : [ "null", "string" ]
   }, {
-    "name" : "tweetText",
+    "name" : "tweet_text",
     "type" : [ "null", "string" ]
   }, {
     "name" : "url",
@@ -26,16 +26,19 @@
     "name" : "hashtags",
     "type" : [ "null", "string" ]
   }, {
-    "name" : "agentLocation",
+    "name" : "agent_location",
     "type" : [ "null", "string" ]
   }, {
-    "name" : "agentDescription",
+    "name" : "agent_desc",
     "type" : [ "null", "string" ]
   }, {
-    "name" : "agentName",
+    "name" : "agent_name",
     "type" : [ "null", "string" ]
   }, {
-    "name" : "agentImageUrl",
+    "name" : "agent_image_url",
     "type" : [ "null", "string" ]
+  } , {
+    "name" : "follower_count",
+    "type" : [ "null", "int" ]
   } ]
 }

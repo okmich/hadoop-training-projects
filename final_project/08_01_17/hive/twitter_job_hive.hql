@@ -5,20 +5,21 @@ use twitter_job;
 create external table job_tweets (
   id bigint,   
   ts bigint, 
-  twtLang string, 
+  twtlang string, 
   create_at string,
-  tweetText string, 
+  tweet_text string, 
   url string,
   source string, 
   hashtags string, 
-  agentLocation string, 
-  agentDescription string, 
-  agentName string, 
-  agentImageUrl string
+  agent_location string, 
+  agent_desc string, 
+  agent_name string, 
+  agent_image_url string,
+  follower_count int
   )
 stored as avro
 location '/user/cloudera/output/handson_train/hive/twitterjobs'
-tblproperties('avro.schema.url'='/user/cloudera/output/handson_train/hive/twitterjobs_avro_schema/twitter_jobs.avsc');
+tblproperties('avro.schema.url'='/user/cloudera/output/handson_train/hive/twitter_avro_schema/twitter_jobs.avsc');
 
 -- sample query to load all job postings in english
-select * from job_tweets where twtlang = 'en';
+--select * from job_tweets where twtlang = 'en';
