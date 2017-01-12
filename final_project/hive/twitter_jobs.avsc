@@ -1,0 +1,44 @@
+{
+  "type" : "record",
+  "name" : "pig_output",
+  "fields" : [ {
+    "name" : "id",
+    "type" : [ "null", "long" ]
+  }, {
+    "name" : "ts",
+    "type" : [ "null", "long" ]
+  }, {
+    "name" : "twtlang",
+    "type" : [ "null", "string" ]
+  }, {
+    "name" : "created_at",
+    "type" : [ "null", "string" ]
+  }, {
+    "name" : "tweet_text",
+    "type" : [ "null", "string" ]
+  }, {
+    "name" : "url",
+    "type" : [ "null", "string" ]
+  }, {
+    "name" : "source",
+    "type" : [ "null", "string" ]
+  }, {
+    "name" : "hashtags",
+    "type" : [ "null", "string" ]
+  }, {
+    "name" : "agent_location",
+    "type" : [ "null", "string" ]
+  }, {
+    "name" : "agent_desc",
+    "type" : [ "null", "string" ]
+  }, {
+    "name" : "agent_name",
+    "type" : [ "null", "string" ]
+  }, {
+    "name" : "agent_image_url",
+    "type" : [ "null", "string" ]
+  } , {
+    "name" : "follower_count",
+    "type" : [ "null", "int" ]
+  } ]
+}

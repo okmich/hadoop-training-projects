@@ -1,0 +1,30 @@
+<workflow-app name="twitterFeed-wf" xmlns="uri:oozie:workflow:0.3">
+	<start to="PigActionProcess"/>
+	 <action name="PigActionProcess">
+        <pig>
+            <job-tracker>${jobTracker}</job-tracker>
+            <name-node>${namenode}</name-node>
+            <script>${app_scripts}/twitter_job.pig</script>
+            <param>year=${iyear}</param>
+            <param>month=${imonth}</param>
+            <param>day=${iday}</param>
+            <param>hour=${ihour}</param>
+            <param>techJobTweetHDFSPath=${techJobTweetHDFSPath}</param>
+            <param>libpath=${app_lib}</param>
+            <argument>-useHCatalog</argument>
+        </pig>
+        <ok to="deleteSourceFile"/>
+        <error to="errorOccured"/>
+    </action>
+    <action name="deleteSourceFile">
+        <fs>
+            <delete path="${techJobTweetHDFSPath}/${iyear}/${imonth}/${iday}/${ihour}"/>
+        </fs>
+        <ok to="completed"/>
+        <error to="errorOccured"/>
+    </action>    
+	<kill name="errorOccured">
+        <message>A failured occured somewhere, error message[${wf:errorMessage(wf:lastErrorNode())}]</message>
+    </kill>
+	<end name="completed" />
+</workflow-app>
