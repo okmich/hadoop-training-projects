@@ -42,29 +42,52 @@ Data nodes
 
 Installation mode
 =====================
-Standalone
-Pseudo-distributed
-Fully distributed 
+Standalone				-	just downloaded and run 
+Pseudo-distributed		- 	configured to run in a cluster even though it is a cluster of 1 node
+Fully distributed 		-	running at in a true cluster with more than 1 node
 
+
+Samples commands
+=====================
 #list directories
 hdfs dfs -ls /
 hdfs dfs -ls /sample_data
-hdfs dfs -lsr /sample_data
-
+hdfs dfs -ls -R /sample_data
 
 #create directories
-hdfs dfs -mkdir ouput #creates the output dir in our hdfs home directory
+hdfs dfs -mkdir output #creates the output dir in our hdfs home directory
 hdfs dfs -mkdir -p /user/okmich20/rawdata/sqoop 
+hdfs dfs -mkdir rawdata/airline
 
 #to read the content of a file 
 hdfs dfs -cat /sample_data/PoT_Misc1/CiscoLogs.txt
 hdfs dfs -tail /sample_data/dswb_airline_test/airline_test.csv
 
-#
-hdfs dfs -get /sample_data/dswb_airline_test/airline_test.csv ./
+#remove a file
+hdfs dfs -rm /sample_data/PoT_Misc1/CiscoLogs.txt
 
-hdfs dfs -mkdir rawdata/airline
+#remove a folder and send it to recycle bin
+hdfs dfs -rm -r /sample_data/dswb_airline_test
+
+#remove a folder and delete without using the recycle bin
+hdfs dfs -rm -r -skipTrash /sample_data/dswb_airline_test
+
+#copy a file from hdfs to local machine
+hdfs dfs -get /sample_data/dswb_airline_test/airline_test.csv ./
+hdfs dfs -copyToLocal /sample_data/dswb_airline_test/airline_test.csv ./
+
+#copy a file to hdfs
 hdfs dfs -put airline_test.csv /user/okmich20/rawdata/airline
+hdfs dfs -copyFromLocal airline_test.csv /user/okmich20/rawdata/airline
+
+#move a file from hdfs to local machine
+hdfs dfs -moveToLocal /sample_data/dswb_airline_test/airline_test.csv ./
+
+#move a file to hdfs
+hdfs dfs -moveFromLocal airline_test.csv /user/okmich20/rawdata/airline
+
+#to change permission on a file/folder on hdfs
+hdfs dfs -chmod 666 /user/okmich20/rawdata/airline
 
 read more of hdfs cli 
 http://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-common/FileSystemShell.html
