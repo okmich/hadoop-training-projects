@@ -13,5 +13,5 @@ wget https://raw.githubusercontent.com/okmich/hadoop-training-projects/master/da
 
 hdfs dfs -mkdir -p /user/okmich20/rawdata/handson_train/nyse
 
-hdfs dfs -copyFromLocal NASDAQ_dividends_A.csv /user/okmich20/rawdata/handson_train/nyse/
-hdfs dfs -put NASDAQ_dividends_C.csv /user/okmich20/rawdata/handson_train/nyse/
+hdfs dfs -moveFromLocal NASDAQ_dividends_A.csv /user/okmich20/rawdata/handson_train/nyse/
+hdfs dfs -moveFromLocal NASDAQ_dividends_C.csv /user/okmich20/rawdata/handson_train/nyse/
