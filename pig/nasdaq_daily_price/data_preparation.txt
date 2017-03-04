@@ -1,9 +1,9 @@
 #let us first create a hdfs folder for the raw data
 hdfs dfs -mkdir -p /user/okmich20/rawdata/handson_train/nasdaq_daily_prices
-hdfs dfs -mkdir -p /user/cloudera/output/handson_train/pig/nasdaq_stock_volume
+hdfs dfs -mkdir -p /user/okmich20/output/handson_train/pig/nasdaq_stock_volume
 
 ## to download the data for the project
 cd /user/cloudera/Downloads
 wget https://raw.githubusercontent.com/thebigjc/HackReduce/master/datasets/nasdaq/daily_prices/NASDAQ_daily_prices_subset.csv
 
-hdfs dfs -put NASDAQ_daily_prices_subset.csv /user/cloudera/rawdata/handson_train/nasdaq_daily_prices
+hdfs dfs -put NASDAQ_daily_prices_subset.csv /user/okmich20/rawdata/handson_train/nasdaq_daily_prices
