@@ -4,9 +4,7 @@
 -- We will see the different file types and formats available 
 -- how to create and load data into Hive tables.
 
-hdfs dfs -mkdir -p /user/okmich20/hive/warehouse/nyse_db
-create database nyse_db
-location '/user/okmich20/hive/warehouse/nyse_db';
+
 
 -- load data [local] inpath '' into 
 -- insert overwrite table nasdaq_dprice
