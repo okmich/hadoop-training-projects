@@ -10,7 +10,8 @@ from flights f
 
 
 -- find the top 3 airports pairs with the shortest distance between them
-add jar file:/home/cloudera/Classes/hadoop-training-projects/hive/airline_ontime_perf/HiveSwarm-1.0-SNAPSHOT.jar;
+-- copy the HiveSwarm jar to a hdfs folder
+add jar hdfs://iop-bi-master.imdemocloud.com:8020/user/okmich20/HiveSwarm-1.0-SNAPSHOT.jar;
 
 
 create temporary function gps_distance_from as 'com.livingsocial.hive.udf.gpsDistanceFrom';
