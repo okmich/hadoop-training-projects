@@ -10,7 +10,11 @@
                 </property>
                 <property>
                     <name>nameNode</name>
-                    <value>${namenode}</value>
+                    <value>${nameNode}</value>
+                </property>
+                <property>
+                    <name>outputPath</name>
+                    <value>${outputPath}</value>
                 </property>
             </configuration>
         </workflow>

@@ -4,11 +4,11 @@
     <action name="stockVolumePigAction">
         <pig>
             <job-tracker>${jobTracker}</job-tracker>
-            <name-node>${namenode}</name-node>
+            <name-node>${nameNode}</name-node>
             <prepare>
-               <delete path="/user/cloudera/output/handson_train/pig/nasdaq_stock_volume"/>
+               <delete path="${outputPath}"/>
             </prepare>
-            <script>/user/cloudera/oozie/stock_volume_job/wf/script/stock_total_volume_analysis.pig</script>
+            <script>${oozie.wf.application.path}/script/stock_total_volume_analysis.pig</script>
         </pig>
         <ok to="jobDone"/>
         <error to="errorOccured"/>
