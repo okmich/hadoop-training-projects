@@ -1,4 +1,4 @@
-<coordinator-app name="twitter-coord" frequency="${coord:hours(-1)}"
+<coordinator-app name="twitter-coord" frequency="${coord:hours(1)}"
                  start="2017-01-01T00:01Z" end="2018-01-01T08:01Z"
                  timezone="UTC"
                  xmlns="uri:oozie:coordinator:0.1"

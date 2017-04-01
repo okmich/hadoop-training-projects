@@ -1,4 +1,5 @@
-create database if not exists twitter_job;
+create database if not exists twitter_job 
+dbproperties('table.creator'='Michael Enudi');
 
 use twitter_job;
 

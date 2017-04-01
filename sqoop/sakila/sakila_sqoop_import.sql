@@ -10,7 +10,12 @@ left join film_actor fa on fa.film_id = f.film_id
 group by f.film_id
 
 -- a query to be used as is by sqoop
-SELECT p.payment_id, p.rental_id, p.amount, p.payment_date, p.last_update, c.customer_id, concat(c.first_name, ' ', c.last_name) customer_name,
-s.staff_id, concat(s.first_name, ' ', s.last_name) staff_name
- FROM payment p  join customer c on c.customer_id = p.customer_id  join staff s on s.staff_id = p.staff_id
-join rental r on r.rental_id = p.rental_id
+SELECT p.payment_id, p.rental_id, p.amount, p.payment_date, p.last_update, 
+c.customer_id, concat(c.first_name, ' ', c.last_name) customer_name, s.staff_id, 
+concat(s.first_name, ' ', s.last_name) staff_name, r.rental_date, r.return_date, 
+f.title film_title, f.description film_desc, f.release_year file_release_year 
+FROM payment p  join customer c on c.customer_id = p.customer_id  
+join staff s on s.staff_id = p.staff_id 
+left join rental r on r.rental_id = p.rental_id 
+left join inventory inv on r.inventory_id = inv.inventory_id 
+left join film f on inv.film_id = f.film_id

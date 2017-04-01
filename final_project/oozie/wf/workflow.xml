@@ -16,13 +16,32 @@
         <ok to="deleteSourceFile"/>
         <error to="errorOccured"/>
     </action>
+    <action name="sqoopToMysql">
+         <sqoop xmlns="uri:oozie:sqoop-action:0.2">
+            <job-tracker>${jobTracker}</job-tracker>
+            <name-node>${namenode}</name-node>
+            <arg>export</arg>
+            <arg>--connect</arg>
+            <arg>jdbc:mysql://quickstart:3306/handson_class_project</arg>
+            <arg>--username</arg>
+            <arg>cloudera</arg>
+            <arg>--table</arg>
+            <arg>twitter_job</arg>
+            <arg>--export-dir</arg>
+            <arg>/user/cloudera/output/handson_train/hive/twitterjobs</arg>
+            <arg>--passwordfile</arg>
+            <arg>/user/cloudera/sqoop-passworfile</arg>
+        </sqoop>
+        <ok to="deleteSourceFile"/>
+        <error to="errorOccured"/>
+    </action>
     <action name="deleteSourceFile">
         <fs>
             <delete path="${techJobTweetHDFSPath}/${iyear}/${imonth}/${iday}/${ihour}"/>
         </fs>
         <ok to="completed"/>
         <error to="errorOccured"/>
-    </action>    
+    </action>
 	<kill name="errorOccured">
         <message>A failured occured somewhere, error message[${wf:errorMessage(wf:lastErrorNode())}]</message>
     </kill>
