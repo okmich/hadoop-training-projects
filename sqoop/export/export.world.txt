@@ -1,6 +1,5 @@
 -- Export tables
-sqoop-export --connect jdbc:mysql://iop-bi-master.imdemocloud.com:3306/sqoop_handson --username root --export-dir /user/okmich20/rawdata/handson_train/nyse  --table nyse_dividends --fields-terminated-by ',' -P
+sqoop-export --connect jdbc:mysql://quickstart:3306/sqoop_handson --username root --table nyse_dividends --export-dir /user/cloudera/rawdata/handson_train/nyse --mapreduce-job-name 'nyse dividend mysql export' --fields-terminated-by ',' -m 2 --password-file /user/cloudera/passwordfile
 
 
-
-sqoop-export --connect jdbc:mysql://iop-bi-master.imdemocloud.com:3306/sqoop_handson --username root --export-dir /user/okmich20/rawdata/handson_train/nyse  --table altered_nyse_dividends --fields-terminated-by ',' --columns exchange,stock_symbol,datestring,value --mapreduce-job-name SQOOP_JOB_FOR_ALTERED_NYSE_DIV_MICHAEL -P
+sqoop-export --connect jdbc:mysql://quickstart:3306/sqoop_handson --username root --table altered_nyse_dividends --export-dir /user/cloudera/rawdata/handson_train/nyse --mapreduce-job-name 'nyse dividend mysql export' --fields-terminated-by ',' -m 1 --password-file /user/cloudera/passwordfile --columns exchange,stock_symbol,datestring,value

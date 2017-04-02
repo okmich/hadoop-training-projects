@@ -18,8 +18,8 @@ wget https://raw.githubusercontent.com/thebigjc/HackReduce/master/datasets/nasda
 
 
 hdfs dfs -mkdir -p /user/okmich20/rawdata/handson_train/nyse
-hdfs dfs -mkdir -p /user/okmich/rawdata/handson_train/nasdaq_daily_prices
+hdfs dfs -mkdir -p /user/okmich20/rawdata/handson_train/nasdaq_daily_prices
 
 hdfs dfs -moveFromLocal NASDAQ_dividends_A.csv /user/okmich20/rawdata/handson_train/nyse/
 hdfs dfs -moveFromLocal NASDAQ_dividends_C.csv /user/okmich20/rawdata/handson_train/nyse/
-hdfs dfs -put NASDAQ_daily_prices_subset.csv /user/okmich/rawdata/handson_train/nasdaq_daily_prices
+hdfs dfs -moveFromLocal NASDAQ_daily_prices_subset.csv /user/okmich20/rawdata/handson_train/nasdaq_daily_prices
