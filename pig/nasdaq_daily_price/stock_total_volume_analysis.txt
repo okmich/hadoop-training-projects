@@ -1,3 +1,14 @@
+-- exchange,
+-- stock_symbol,
+-- date,
+-- stock_price_open,
+-- stock_price_high,
+-- stock_price_low,
+-- stock_price_close,
+-- stock_volume,
+-- stock_price_adj_close
+
+-- 1) Run the total stock_volume traded for each stock in the entire dataset. Store in a fashion order by total volumn in descendeing order
 
 -- load the data storage directory
 data = LOAD '${inputDir}' USING PigStorage(',') AS (exchange:chararray,stock_symbol:chararray,date:chararray,stock_price_open:float,stock_price_high:float,stock_price_low:float,stock_price_close:float,stock_volume:int,stock_price_adj_close:float);

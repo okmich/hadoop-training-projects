@@ -14,7 +14,7 @@ allRatingdata = LOAD '/user/okmich20/rawdata/handson_train/movielens/latest/rati
 headlessRatingsData = FILTER allRatingdata BY userId != 'userId';
 pRatingData = FOREACH headlessRatingsData GENERATE (long)movieId as movieId, (float)rating as rating;
 
-mergedMovieRatingData = JOIN pMovieData BY movieId, pRatingData BY movieId;
+mergedMovieRatingData = JOIN pMovieData BY movieId RIGHT, pRatingData BY movieId;
 
 -- mergedMovieRatingData: {pMovieData::movieId: long,pMovieData::title: chararray,pRatingData::movieId: long,pRatingData::rating: float}
 

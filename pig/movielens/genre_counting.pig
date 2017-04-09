@@ -28,6 +28,6 @@ grouped = GROUP flattend BY f;
 agged = FOREACH grouped GENERATE (chararray)group as genre, COUNT(flattend) as num;
 sorted  = ORDER agged BY genre;
 
-STORE sorted into '/user/okmich20/output/handson_train/movielens/genre_count/text'  USING  PigStorage(',');
+STORE sorted into '/user/okmich20/output/handson_train/movielens/genre_count/text'  USING  PigStorage(); 
 STORE sorted into '/user/okmich20/output/handson_train/movielens/genre_count/avro'  using  AvroStorage();
 STORE sorted into '/user/okmich20/output/handson_train/movielens/genre_count/json'  using  JsonStorage();

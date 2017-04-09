@@ -27,7 +27,8 @@ grouped_ratings = GROUP ratings BY movieId;
 movieId_ratings = FOREACH grouped_ratings GENERATE group as movieId, (int)COUNT(ratings.movieId) as num_rating, (float)SUM(ratings.rating) as tot_rating, (float)AVG(ratings.rating) as avg_rating, VAR(ratings.rating) as rating_variance;
 
 -- join the collections 
-movie_rating_jn = JOIN movieId_ratings BY movieId, movie BY movieId;
+movie_rating_jn = JOIN movieId_ratings BY movieId RIGHT, movie BY movieId;
+
 movie_rating = FOREACH movie_rating_jn GENERATE movie::movieId as movieId, movie::title, movieId_ratings::tot_rating as total_rating, movieId_ratings::num_rating as num_ratings, movieId_ratings::avg_rating as avg_rating, movieId_ratings::rating_variance  as var_rating;
 
 sorted_ratings = ORDER movie_rating BY num_ratings DESC, avg_rating DESC;

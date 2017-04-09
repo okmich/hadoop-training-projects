@@ -11,7 +11,7 @@
 
 -- 2) find the record with max volatility for each stock. Volatility is  stock_price_high - stock_price_low ordered by stock system
 
-data = LOAD '/user/okmich20/rawdata/feb/nasdaq_daily_price' USING PigStorage(',') AS (exchange:chararray,stock_symbol:chararray,date:chararray,stock_price_open:float,stock_price_high:float,stock_price_low:float,stock_price_close:float,stock_volume:long,stock_price_adj_close:float);
+data = LOAD '/user/cloudera/rawdata/handson_train/feb/nasdaq_daily_prices' USING PigStorage(',') AS (exchange:chararray,stock_symbol:chararray,date:chararray,stock_price_open:float,stock_price_high:float,stock_price_low:float,stock_price_close:float,stock_volume:long,stock_price_adj_close:float);
 
 -- incase the data from sqoop still contains the header, it is important to filter it out
 filtered_data = FILTER data BY exchange != 'exchange';
@@ -30,7 +30,7 @@ max_vol_data = FOREACH grp_vol_data GENERATE CONCAT(group, '-', (chararray)MAX(p
 
 
 -- join max_vol_data with filtered_data on two fields
-joined_data = JOIN projected_data BY key, max_vol_data BY key
+joined_data = JOIN projected_data BY key, max_vol_data BY key;
 
 final_result = FOREACH joined_data GENERATE projected_data::exchange as exchange,projected_data::stock_symbol as stock_symbol,projected_data::date as date,projected_data::stock_price_open as stock_price_open,projected_data::stock_price_high as stock_price_high,projected_data::stock_price_low as stock_price_low,projected_data::stock_price_close as stock_price_close,projected_data::stock_volume as stock_volume,projected_data::stock_price_adj_close as stock_price_adj_close,projected_data::volatility as volatility;
 

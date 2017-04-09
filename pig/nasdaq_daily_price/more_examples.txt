@@ -8,8 +8,6 @@
 -- stock_volume,
 -- stock_price_adj_close
 
-
--- 1) Run the total stock_volume traded for each stock in the entire dataset. Store in a fashion order by total volumn in descendeing order
 -- 2) find the record with max volatility for each stock. Volatility is  stock_price_high - stock_price_low
 -- 3) find the average closing price for each stock in the entire dataset
 -- 4) find all the stocks where volatililty was above the avg volatility for the particular stock

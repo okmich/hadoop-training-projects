@@ -11,5 +11,5 @@ hdfs dfs -mkdir -p /user/okmich20/rawdata/handson_train/movielens/latest/genome.
 hdfs dfs -moveFromLocal ml-latest/movies.csv /user/okmich20/rawdata/handson_train/movielens/latest/movies
 hdfs dfs -moveFromLocal ml-latest/ratings.csv /user/okmich20/rawdata/handson_train/movielens/latest/ratings
 hdfs dfs -moveFromLocal ml-latest/tags.csv /user/okmich20/rawdata/handson_train/movielens/latest/tags
-hdfs dfs -moveFromLocal ml-latest/genome-tags.csv /user/cloudera/rawdata/handson_train/movielens/latest/genome.tags
-hdfs dfs -moveFromLocal ml-latest/genome-scores.csv /user/cloudera/rawdata/handson_train/movielens/latest/genome.scores
+hdfs dfs -moveFromLocal ml-latest/genome-tags.csv /user/okmich20/rawdata/handson_train/movielens/latest/genome.tags
+hdfs dfs -moveFromLocal ml-latest/genome-scores.csv /user/okmich20/rawdata/handson_train/movielens/latest/genome.scores
