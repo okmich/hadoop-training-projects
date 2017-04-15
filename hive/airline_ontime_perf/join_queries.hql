@@ -2,11 +2,11 @@
 select flightnum, year, month, dayofmonth, dayofweek, c.description, f.tailnum, p.aircraft_type,
 	CONCAT(a.airport, ' ', a.city, ', ', a.state, ', ', a.country ) origin, 
 	CONCAT(b.airport, ' ', b.city, ', ', b.state, ', ', b.country ) dest 
-from flights f 
-	join carriers c on f.uniquecarrier = c.cdde
-	join airports a on f.origin = a.iata
-	join airports b on f.dest = b.iata
-	join plane_info p on p.tailnum = f.tailnum;
+from flight f 
+	left join carriers c on f.uniquecarrier = c.cdde
+	left join airports a on f.origin = a.iata
+	left join airports b on f.dest = b.iata
+	left join plane_info p on p.tailnum = f.tailnum;
 
 
 -- find the top 3 airports pairs with the shortest distance between them

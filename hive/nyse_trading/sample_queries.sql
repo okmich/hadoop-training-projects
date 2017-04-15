@@ -18,6 +18,14 @@ join
 (select stock_symbol, max(dividends) record_dividend from nasdaq_dividends group by stock_symbol) dividends
 on prices.stock_symbol = dividends.stock_symbol
 
+-- find all the stocks where volatililty was above the avg volatility for the particular stock
+select t.exchange_name, t.stock_symbol, t.tdate, t.stock_price_open, t.stock_price_high,
+t.stock_price_low, t.stock_price_close, t.stock_volume, t.stock_price_adj_close, 
+(t.stock_price_high - t.stock_price_low) volatility  from tbl_nasdaq_daily_prices_parquet as t join 
+(select i.stock_symbol, avg(i.stock_price_high - i.stock_price_low) avg_volatility from tbl_nasdaq_daily_prices_parquet i
+group by i.stock_symbol) as t1 on t1.stock_symbol = t.stock_symbol 
+where (t.stock_price_high - t.stock_price_low) > t1.avg_volatility
+
 -- find the record count where the volatility is greater than the avg volatility for the stock
 select count(1) from nasdaq_daily_prices n join 
 	(select t.stock_symbol, avg(t.stock_price_high - t.stock_price_low) avg_vol from 

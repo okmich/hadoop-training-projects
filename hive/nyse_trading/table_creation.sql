@@ -20,6 +20,12 @@ create table tbl_nasdaq_daily_prices_parquet (
 )
 stored as parquet;
 
+--create and load an avro table simultaneously
+create table tbl_nasdaq_daily_prices_avro 
+stored as avro
+as 
+select * from tbl_nasdaq_daily_prices_parquet;
+
 --Create an external table for NASDAQ daily prices data set.
 create external table nasdaq_daily_prices (
 	exchange_name string,stock_symbol string, tdate string,stock_price_open float,
@@ -28,7 +34,7 @@ create external table nasdaq_daily_prices (
 )
 row format delimited
 fields terminated by ','
-location '/user/okmich20/rawdata/handson_train/nasdaq_daily_prices';
+location '/user/cloudera/rawdata/handson_train/feb/nasdaq_daily_prices';
 
 -- Create an external table for NASDAQ dividends data set.
 create external table nasdaq_dividends (
@@ -36,7 +42,7 @@ create external table nasdaq_dividends (
 )
 row format delimited
 fields terminated by ','
-location '/user/okmich20/rawdata/handson_train/nyse';
+location '/user/cloudera/rawdata/handson_train/feb/nyse';
 
 -- create a managed avro table
 create table nasdaq_dividends_avro (

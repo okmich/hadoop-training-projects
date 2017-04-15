@@ -1,7 +1,7 @@
 use handson_nasdaq;
 
 --load data into the managed table tbl_nasdaq_daily_prices
-load data inpath '' overwrite into tbl_nasdaq_daily_prices;
+load data inpath '' overwrite into table tbl_nasdaq_daily_prices;
 
 --load data into the managed parquet table tbl_nasdaq_daily_prices 
 insert overwrite table tbl_nasdaq_daily_prices_parquet

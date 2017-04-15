@@ -16,7 +16,7 @@ fields terminated by ',';
 
 
 -- creates an external table table on airline timing
-create external table airline_timing 
+create external table flight 
 	(year smallint,month tinyint,dayofmonth tinyint,dayofweek tinyint,
 	deptime smallint, crsdeptime smallint, arrtime smallint, crsarrtime smallint, 
 	uniquecarrier string, flightnum string, tailnum string, actualelapsedtime smallint,
@@ -71,7 +71,7 @@ select
 	crsdeptime ,        
 	arrtime,            
 	crsarrtime ,        
-	uniquecarrier  ,,    
+	uniquecarrier  ,   
 	flightnum ,         
 	tailnum ,           
 	actualelapsedtime  ,
