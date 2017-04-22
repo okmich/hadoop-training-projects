@@ -1,13 +1,15 @@
-create database if not exists twitter_job 
-dbproperties('table.creator'='Michael Enudi');
+create database if not exists twitterjob ;
 
-use twitter_job;
+alter  database twitterjob 
+set dbproperties('table.creator'='Michael Enudi')
+
+use twitterjob;
 
 create external table job_tweets (
   id bigint,   
   ts bigint, 
   twtlang string, 
-  create_at string,
+  created_at string,
   tweet_text string, 
   url string,
   source string, 
@@ -17,10 +19,10 @@ create external table job_tweets (
   agent_name string, 
   agent_image_url string,
   follower_count int
-  )
+)
 stored as avro
-location '/user/cloudera/output/handson_train/hive/twitterjobs'
-tblproperties('avro.schema.url'='/user/cloudera/output/handson_train/hive/twitter_avro_schema/twitter_jobs.avsc');
+location '/user/okmich20/output/handson_train/hive/twitterjobs';
+tblproperties('avro.schema.url'='/user/okmich20/output/handson_train/hive/twitter_avro_schema/twitter_jobs.avsc');
 
 -- sample query to load all job postings in english
 --select * from job_tweets where twtlang = 'en';

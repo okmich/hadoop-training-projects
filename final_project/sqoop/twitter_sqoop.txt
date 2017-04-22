@@ -1,3 +1,3 @@
-sqoop-export --connect jdbc:mysql://quickstart:3306/handson_class_project --username root \
---export-dir /user/cloudera/output/handson_train/hive/twitterjobs --mapreduce-job-name SqoopExportingTwitterJobs --table twitter_job  --password cloudera
+sqoop-export --connect jdbc:mysql://iop-bi-master.imdemocloud.com:3306/ok_twitter_job --username root \
+--export-dir /user/okmich20/output/handson_train/hive/twitterjobs --mapreduce-job-name SqoopExportingTwitterJobs --table twitter_job  -P
 
