@@ -14,19 +14,31 @@ sqoop-list-tables --connect jdbc:mysql://quickstart:3306/world --username root -
 sqoop-list-databases --connect jdbc:mysql://quickstart.cloudera:3306/ --username root --password cloudera
 
 ## import a table with defaults
-sqoop-import --connect jdbc:mysql://quickstart:3306/world --username root --target-dir /user/cloudera/output/handson_train/sqoop/city -table city --password cloudera
+sqoop-import --connect jdbc:mysql://quickstart.cloudera:3306/world --username root --table city --target-dir /user/cloudera/output/handson_train/may/sqoop/import/city-defaults -P
 
 ## import a table with defaults with a single mapper
-sqoop-import --connect jdbc:mysql://quickstart:3306/world --username root --target-dir /user/cloudera/output/handson_train/sqoop/city_singlemap -table city --password cloudera --num-mappers 1
+sqoop-import --connect jdbc:mysql://quickstart.cloudera:3306/world --username root --table city --target-dir /user/cloudera/output/handson_train/may/sqoop/import/city-defaults-singlemapper -m 1 -P
+
+## import a table with defaults with a single mapper to an existing folder
+sqoop-import --connect jdbc:mysql://quickstart.cloudera:3306/world --username root --table city --target-dir /user/cloudera/output/handson_train/may/sqoop/import/city-defaults-singlemapper -m 1 --append -P
 
 ## import a table with defaults with a single mapper and with tab-delimited records
-sqoop-import --connect jdbc:mysql://quickstart:3306/world --username root --target-dir /user/cloudera/output/handson_train/sqoop/city_singlemap_tabdelimited -table city --num-mappers 1 --fields-terminated-by '\t' -P
+sqoop-import --connect jdbc:mysql://quickstart.cloudera:3306/world --username root  --table city --target-dir /user/cloudera/output/handson_train/may/sqoop/import/city-tab-delimited -m 1 --fields-terminated-by '\t' --append -P
+
+##-- (classwork) import all countries into 1 file in a true csv format, "nanes are quote", comman, escaped
+sqoop-import --connect jdbc:mysql://quickstart.cloudera:3306/world --username root  --table city --target-dir /user/cloudera/output/handson_train/may/sqoop/import/city-csv-format -m 1 --fields-terminated-by ',' --enclosed-by "\"" --escaped-by "\\"  -P
 
 ##-- Import table with different format (parquet file) into a single file
-sqoop-import --connect jdbc:mysql://quickstart:3306/world --username root --target-dir /user/cloudera/output/handson_train/sqoop/city_singlemap_parquet --table city --as-parquetfile --mapreduce-job-name SqoopJobParquet -m 1 -P 
+sqoop-import --connect jdbc:mysql://quickstart.cloudera:3306/world --username root  --table city --target-dir /user/cloudera/output/handson_train/may/sqoop/import/city-parquet -m 1 --as-parquetfile -P
+
 
 ##-- Import table with different format (avro file) into a single file
-sqoop-import --connect jdbc:mysql://quickstart:3306/world --username root --target-dir /user/cloudera/output/handson_train/sqoop/city_singlemap_avro --table city --as-avrofile --mapreduce-job-name SqoopJobParquet -m 1 -P 
+sqoop-import --connect jdbc:mysql://quickstart.cloudera:3306/world --username root  --table city --target-dir /user/cloudera/output/handson_train/may/sqoop/import/city-avro -m 1 --as-avrodatafile  -P
+
+
+##-- Import table with where clause and avro file 
+sqoop-import --connect jdbc:mysql://quickstart.cloudera:3306/world --username root  --table city --target-dir /user/cloudera/output/handson_train/may/sqoop/import/city-where-population-avro -m 1 --as-avrodatafile --where 'population > 100000'  -P
+
 
 ##-- Import table with where clause and avro file 
 sqoop-import --connect jdbc:mysql://quickstart:3306/world --username root --table city --target-dir /user/cloudera/output/handson_train/feb/sqoop/city_na -m 2 --fields-terminated-by \001 --as-avrodatafile --where "countryCode in ('USA', 'CAN', 'MEX')" -P
@@ -41,4 +53,4 @@ sqoop-import --connect jdbc:mysql://quickstart:3306/world --username root --tabl
 sqoop-import --connect jdbc:mysql://quickstart:3306/world --username root --table city --target-dir /user/cloudera/output/handson_train/feb/sqoop/city_na -m 2 --fields-terminated-by \001 --as-avrodatafile --where "countryCode in ('USA', 'CAN', 'MEX')" --password-file /user/cloudera/passwordfile --append
 
 ##-- Import all tables with avro format
-sqoop-import-all-tables --connect jdbc:mysql://quickstart:3306/world --username root --warehouse-dir /user/cloudera/output/handson_train/sqoop/world --mapreduce-job-name SqoopJobAllWorldTables --as-avrodatafile  --password-file /user/cloudera/passwordfile
+sqoop-import-all-tables --connect jdbc:mysql://quickstart.cloudera:3306/world --username root  --warehouse-dir /user/cloudera/output/handson_train/may/sqoop/importall/world -m 1 --as-avrodatafile --password-file /user/cloudera/passwordfile

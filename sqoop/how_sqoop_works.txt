@@ -1,5 +1,7 @@
-jdbc
+MapReduce
 
+
+jdbc
 	how does sqoop work
 		import
 			jdbc - 
@@ -20,3 +22,9 @@ jdbc
 			jdbc - 
 				export	- insert/update statement
 
+
+connection url  jdbc:mysql://quickstart.cloudera:3306/dbname
+username		root
+password		cloudera
+
+--connect jdbc:mysql://quickstart.cloudera:3306/retail_db --username root --password cloudera

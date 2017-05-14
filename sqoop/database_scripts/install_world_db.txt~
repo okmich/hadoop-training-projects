@@ -1,4 +1,4 @@
-## cd into the hadoop-training-projects/sqoop/database-scripts directory
+## cd into the hadoop-training-projects directory
 
 # unzip the zip scripts
 unzip world.sql.zip
