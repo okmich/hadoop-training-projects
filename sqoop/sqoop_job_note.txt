@@ -1,0 +1,9 @@
+
+sqoop-job --create load_world_city -- import --connect jdbc:mysql://quickstart.cloudera:3306/world --username root  --table city --target-dir /user/cloudera/output/handson_train/may/sqoop/import/city-tab-delimited -m 1 --fields-terminated-by '\t' --append --password-file /user/cloudera/passwordfile --mapreduce-job-name 'incremental_city' --check-column 'ID' --incremental 'append'
+
+
+
+sqoop-job --list
+sqoop-job --exec load_world_city
+sqoop-job --show load_world_city
+sqoop-job --delete load_world_city

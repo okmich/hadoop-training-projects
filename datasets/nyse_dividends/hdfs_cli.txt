@@ -1,3 +1,5 @@
+#clouder quickstart vm
+# ==================================
 wget https://raw.githubusercontent.com/okmich/hadoop-training-projects/master/datasets/nyse_dividends/NASDAQ_dividends_A.csv
 wget https://raw.githubusercontent.com/okmich/hadoop-training-projects/master/datasets/nyse_dividends/NASDAQ_dividends_C.csv
 wget https://raw.githubusercontent.com/thebigjc/HackReduce/master/datasets/nasdaq/daily_prices/NASDAQ_daily_prices_subset.csv
