@@ -1,4 +1,4 @@
-raw_data = LOAD '/user/cloudera/rawdata/handson_train/feb/airline_performance/flights' USING PigStorage(',') AS 
+raw_data = LOAD '/user/okmich20/rawdata/handson_train/airline_performance/flights' USING PigStorage(',') AS 
 	(year:chararray,month:chararray,dayOfMonth:chararray,dayOfWeek:chararray,DepTime:chararray,
 	CRSDepTime:chararray,ArrTime:chararray,CRSArrTime:chararray,UniqueCarrier:chararray,FlightNum:chararray,
 	TailNum:chararray,ActualElapsedTime:chararray,CRSElapsedTime:chararray,AirTime:chararray,ArrDelay:chararray,
@@ -35,4 +35,4 @@ rel_data = FOREACH headless_data GENERATE year, month, dayOfMonth, dayOfWeek,
 	(SecurityDelay == 'NA' ? '' : SecurityDelay) AS SecurityDelay,
 	(LateAircraftDelay == 'NA' ? '' : LateAircraftDelay) AS LateAircraftDelay;
 
-STORE rel_data INTO '/user/cloudera/rawdata/handson_train/feb/airline_performance/flights_processed' Using PigStorage(',');
+STORE rel_data INTO '/user/okmich20/output/handson_train/airline_performance/flights/processed' Using PigStorage(',');

@@ -1,9 +1,9 @@
 -- generate movie rating analyse
 -- output 
--- movieId, title, totalRating, ratingCount, averageRating
+-- movieId, title, totalRating, ratingCount, averageRating, ratingVariance
 
 register '/mnt/home/okmich20/hadoop-training-projects/pig/movielens/datafu-pig-incubating-1.3.1.jar'
-register '/mnt/home/okmich20/hadoop-training-projects/pig/movielens/piggybank-0.15.0.jar'
+register '/home/cloudera/classes/hadoop-training-projects/pig/movielens/piggybank-0.16.0.jar''
 
 DEFINE VAR datafu.pig.stats.VAR();
 DEFINE CSVLoader org.apache.pig.piggybank.storage.CSVLoader();

@@ -18,6 +18,7 @@
 -- we will use pig to pre-process the data to restrict the class to few features instead
 -- Table partitioning
 -- Joins
+-- serdes and IOs
 -- User-defined functions (UDF) and custom UDFs
 
 

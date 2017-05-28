@@ -1,3 +1,23 @@
+
+select year, count(1) from pq_flight group by year;
+
+
+select year, count(1) from flight group by year;
+
+
+select month, count(1) from pq_flight where year=2006 group by month;
+
+select month, count(1) from pq_flight_part where year=2006 group by month;
+
+
+select count(1) from pq_flight-- where year=2006 and month=1;
+
+select count(1) from pq_flight_part --where year=2006 and month=1;
+
+select count(1) from pq_flight_part2 --where year=2006 and month=1;
+
+
+
 --avg DepDelay in 2008 by month
 select month, avg(depdelay) avg_depdelay from pq_airline_timing where year = 2008 group by month;
 

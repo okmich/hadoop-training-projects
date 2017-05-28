@@ -26,11 +26,11 @@ create external table flight
 	weatherdelay smallint, nasdelay smallint, securitydelay smallint, lateaircraftdelay smallint)
 row format delimited
 fields terminated by ','
-location '/user/okmich20/rawdata/handson_train/airline_performance/flights_processed';
+location '/user/okmich20/output/handson_train/airline_performance/flights/processed';
 
 
 -- creates an external table table on airline timing using parquet format
-create external table pq_airline_timing 
+create external table pq_flight 
 	(year smallint,month tinyint,dayofmonth tinyint,dayofweek tinyint,
 	deptime smallint, crsdeptime smallint, arrtime smallint, crsarrtime smallint, 
 	uniquecarrier string, flightnum string, tailnum string, actualelapsedtime smallint,
@@ -39,13 +39,15 @@ create external table pq_airline_timing
 	cancelled string, cancellationcode string, diverted string, carrierdelay smallint,
 	weatherdelay smallint, nasdelay smallint, securitydelay smallint, lateaircraftdelay smallint)
 stored as parquet
-location '/user/okmich20/rawdata/handson_train/airline_performance/flights_parquet';
+location '/user/okmich20/output/handson_train/airline_performance/flights/parquet';
 
 -- copy records from airline_timing to pq_airline_timing
-insert overwrite table pq_airline_timing select * from airline_timing;
+insert overwrite table pq_flight select * from flight;
+
+-- discussion on partitioning
 
 -- creates an external parquet table with partition (by year) on airline timing
-create external table pq_airline_timing_part
+create external table pq_flight_part
 	(month tinyint,dayofmonth tinyint,dayofweek tinyint,
 	deptime smallint, crsdeptime smallint, arrtime smallint, crsarrtime smallint, 
 	uniquecarrier string, flightnum string, tailnum string, actualelapsedtime smallint,
@@ -55,14 +57,30 @@ create external table pq_airline_timing_part
 	weatherdelay smallint, nasdelay smallint, securitydelay smallint, lateaircraftdelay smallint)
 partitioned by (year smallint)
 stored as parquet
-location '/user/okmich20/rawdata/handson_train/airline_performance/flights_parquet_partd';
+location '/user/okmich20/output/handson_train/airline_performance/flights/parquet_partd';
+
+-- nested partitioning
+create external table pq_flight_part2
+	(dayofmonth tinyint,dayofweek tinyint,
+	deptime smallint, crsdeptime smallint, arrtime smallint, crsarrtime smallint, 
+	uniquecarrier string, flightnum string, tailnum string, actualelapsedtime smallint,
+	crselapsedtime smallint, airtime smallint, arrdelay smallint, depdelay smallint, 
+	origin string, dest string, distance smallint, taxiin string, taxiout string,
+	cancelled string, cancellationcode string, diverted string, carrierdelay smallint,
+	weatherdelay smallint, nasdelay smallint, securitydelay smallint, lateaircraftdelay smallint)
+	partitioned by (year smallint, month tinyint)
+	stored as parquet
+location '/user/okmich20/output/handson_train/airline_performance/flights/parquet_partd2';
+
 
 -- STATIC PARTITIONING
 -- manual add a partition to the partitoned table
-alter table airline_timing_part add partition (year=2007);
+alter table pq_flight_part add partition (year=2007);
+
+alter table pq_flight_part2 add partition (year=2007, month=1);
 
 -- insert data into a table partition using static partitioning
-insert overwrite table airline_timing_part partition(year=2007)
+insert overwrite table pq_flight_part partition(year=2007)
 select 
 	month,   
 	dayofmonth,         
@@ -94,11 +112,43 @@ select
 	lateaircraftdelay 
 from airline_timing where year = 2007;
 
+
+insert overwrite table pq_flight_part2 partition(year=2006, month=1)
+	select 
+	dayofmonth,         
+	dayofweek,          
+	deptime,            
+	crsdeptime ,        
+	arrtime,            
+	crsarrtime ,        
+	uniquecarrier  ,   
+	flightnum ,         
+	tailnum ,           
+	actualelapsedtime  ,
+	crselapsedtime  ,   
+	airtime  ,          
+	arrdelay ,          
+	depdelay ,          
+	origin  ,           
+	dest ,              
+	distance   ,        
+	taxiin ,            
+	taxiout   ,         
+	cancelled ,         
+	cancellationcode  , 
+	diverted   ,        
+	carrierdelay   ,    
+	weatherdelay  ,     
+	nasdelay ,          
+	securitydelay    ,  
+	lateaircraftdelay 
+from pq_flight where year = 2006 and month=1;
+
 -- droping a partition
 -- not that since this is an external table , the partition will be dropped from the hive metastore but will still be available on the distributed file system
 -- so there will have to a hdfs command to drop the file as well
--- hdfs dfs -rm -R /user/cloudera/output/handson_train/pig/airline_time_performance/flight_partitioned_avro/year=2007
-alter table airline_timing_part drop partition(year=2007);
+-- hdfs dfs -rm -R /user/okmich20/output/handson_train/airline_performance/flights/partitioned_avro/year=2007
+alter table pq_flight_part drop partition(year=2007);
 
 -- DYNAMIC PARTITIONING
 
@@ -108,7 +158,7 @@ set hive.exec.dynamic.partition=true;
 set hive.exec.dynamic.partition.mode=nonstrict;
 
 -- inserting data into a hive table using dynamic nonstrict partition mode
-insert into airline_timing_part partition(year)
+insert into pq_flight_part partition(year)
 select 
 	month,   
 	dayofmonth,         
@@ -139,8 +189,41 @@ select
 	securitydelay    ,  
 	lateaircraftdelay,
 	year
-from airline_timing ;
+from pq_flight ;
 
+
+insert into pq_flight_part2 partition(year,month)
+select  
+	dayofmonth,         
+	dayofweek,          
+	deptime,            
+	crsdeptime ,        
+	arrtime,            
+	crsarrtime ,        
+	uniquecarrier  ,    
+	flightnum ,         
+	tailnum ,           
+	actualelapsedtime  ,
+	crselapsedtime  ,   
+	airtime  ,          
+	arrdelay ,          
+	depdelay ,          
+	origin  ,           
+	dest ,              
+	distance   ,        
+	taxiin ,            
+	taxiout   ,         
+	cancelled ,         
+	cancellationcode  , 
+	diverted   ,        
+	carrierdelay   ,    
+	weatherdelay  ,     
+	nasdelay ,          
+	securitydelay    ,  
+	lateaircraftdelay,
+	year,
+	month
+from pq_flight;
 
 -- create external table for airports
 create external table airports (
