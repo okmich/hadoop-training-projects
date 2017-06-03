@@ -17,20 +17,21 @@ add jar hdfs://iop-bi-master.imdemocloud.com:8020/user/okmich20/HiveSwarm-1.0-SN
 create temporary function gps_distance_from as 'com.livingsocial.hive.udf.gpsDistanceFrom';
 
 --- creating a hive view
-create view airport_without_header as
-select * from airports where iata <> 'iata';
+create view v_airports as select iata, concat(airport, ', ', city, ', ', state, ', ', country) address, airport, city, state, country, geolat, geolong from airports where iata <> 'iata';
 
 
 -- query
 select from_airport, to_airport, MIN(dist) minimum_distance from 
-	(	select tbl1.airport from_airport, tbl2.airport to_airport, gps_distance_from(tbl1.geolat, tbl1.geolong, tbl2.geolat, tbl2.geolong ) dist from 
-		(select  iata, airport, geolong, geolat from airport_without_header) tbl1
+	(select tbl1.address from_airport, tbl2.address to_airport, gps_distance_from(tbl1.geolat, tbl1.geolong, tbl2.geolat, tbl2.geolong, 'km' ) dist from 
+			(select  iata, address, geolong, geolat from v_airports) tbl1
 		full outer join 
-		(select  iata, airport, geolong, geolat from airport_without_header) tbl2
+			(select  iata, address, geolong, geolat from v_airports) tbl2
+	where tbl1.iata <> tbl2.iata
 	) v
 group by from_airport, to_airport
-order by 3 
-limit 3;
+order by minimum_distance 
+limit 10;
+
 
 
 add jar /home/cloudera/classes/hadoop-training-projects/hive/airline_ontime_perf/HiveSwarm-1.0-SNAPSHOT.jar

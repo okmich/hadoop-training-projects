@@ -151,7 +151,6 @@ from pq_flight where year = 2006 and month=1;
 alter table pq_flight_part drop partition(year=2007);
 
 -- DYNAMIC PARTITIONING
-
 --enabling dynamic partition in a hive database
 --setting the dynamic partition mode to non-strict
 set hive.exec.dynamic.partition=true;
