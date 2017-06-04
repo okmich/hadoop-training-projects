@@ -7,3 +7,6 @@ hdfs dfs -mkdir -p /user/cloudera/output/handson_train/oozie/coord
 
 
 REGISTER '/user/cloudera/output/handson_train/oozie/wf/lib/json-simple-1.1.1.jar'
+
+
+# pig -p year=2017 -p month=06 -p day=04 -p hour=07 -f /home/cloudera/classes/hadoop-training-projects/final_project/pig/twitter_job_v2.pig
