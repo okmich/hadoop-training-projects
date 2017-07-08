@@ -43,6 +43,9 @@ sqoop-import --connect jdbc:mysql://quickstart.cloudera:3306/world --username ro
 ##-- Import table with where clause and avro file 
 sqoop-import --connect jdbc:mysql://quickstart:3306/world --username root --table city --target-dir /user/cloudera/output/handson_train/feb/sqoop/city_na -m 2 --fields-terminated-by \001 --as-avrodatafile --where "countryCode in ('USA', 'CAN', 'MEX')" -P
 
+## -- incremental import
+sqoop-import --connect jdbc:mysql://quickstart.cloudera:3306/world --username root --table city --target-dir /user/cloudera/output/handson_train/july/sqoop/world/city_single_map_avro_incr -m 1 --as-avrodatafile --password cloudera --append --incremental 'append' --check-column 'ID'  --last-value 1000
+
 ##-- Import table with where clause with avro format using a password file
 ## password file was created with the following command
 ## echo "cloudera" > passwordfile
