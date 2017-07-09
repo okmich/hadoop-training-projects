@@ -1,5 +1,5 @@
 # download the sakila database creation script
-wget https://raw.githubusercontent.com/okmich/hadoop-training-projects/master/sqoop/database_scripts/sakila-db.tar
+# wget https://raw.githubusercontent.com/okmich/hadoop-training-projects/master/sqoop/database_scripts/sakila-db.tar
 
 #extract the files
 tar fvx sakila-db.tar

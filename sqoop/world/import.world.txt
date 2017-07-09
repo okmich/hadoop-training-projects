@@ -56,4 +56,4 @@ sqoop-import --connect jdbc:mysql://quickstart.cloudera:3306/world --username ro
 sqoop-import --connect jdbc:mysql://quickstart:3306/world --username root --table city --target-dir /user/cloudera/output/handson_train/feb/sqoop/city_na -m 2 --fields-terminated-by \001 --as-avrodatafile --where "countryCode in ('USA', 'CAN', 'MEX')" --password-file /user/cloudera/passwordfile --append
 
 ##-- Import all tables with avro format
-sqoop-import-all-tables --connect jdbc:mysql://quickstart.cloudera:3306/world --username root  --warehouse-dir /user/cloudera/output/handson_train/may/sqoop/importall/world -m 1 --as-avrodatafile --password-file /user/cloudera/passwordfile
+sqoop-import-all-tables --connect jdbc:mysql://quickstart.cloudera:3306/world --username root  --warehouse-dir /user/cloudera/output/handson_train/july/sqoop/importall/world -m 1 --as-avrodatafile --password-file /user/cloudera/passwordfile

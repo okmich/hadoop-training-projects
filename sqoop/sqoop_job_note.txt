@@ -1,9 +1,19 @@
 
-sqoop-job --create load_world_city -- import --connect jdbc:mysql://quickstart.cloudera:3306/world --username root  --table city --target-dir /user/cloudera/output/handson_train/may/sqoop/import/city-tab-delimited -m 1 --fields-terminated-by '\t' --append --password-file /user/cloudera/passwordfile --mapreduce-job-name 'incremental_city' --check-column 'ID' --incremental 'append'
+# creating a job that evaluate a sql command
+sqoop-job --create  eval_list_db -- eval --connect jdbc:mysql://quickstart.cloudera:3306/ --username root --password cloudera --query "show databases"
 
 
+sqoop-job --create load_world_city -- import --connect jdbc:mysql://quickstart.cloudera:3306/world --username root  --table city --target-dir /user/cloudera/output/handson_train/july/sqoop/import/city-tab-delimited -m 1 --fields-terminated-by '\t' --append --password-file /user/cloudera/passwordfile --mapreduce-job-name 'incremental_city' --check-column 'ID' --incremental 'append' 
 
+
+# to list all jobs in the sqoop metastore
 sqoop-job --list
+
+# to run a sqoop job
 sqoop-job --exec load_world_city
+
+# to show the metadata for a stored job
 sqoop-job --show load_world_city
+
+# to delete a job from the sqoop metastore
 sqoop-job --delete load_world_city

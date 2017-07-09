@@ -1,5 +1,5 @@
 -- Export tables
 sqoop-export --connect jdbc:mysql://quickstart:3306/sqoop_handson --username root --table nyse_dividends --export-dir /user/cloudera/rawdata/handson_train/nyse --mapreduce-job-name 'nyse dividend mysql export' --fields-terminated-by ',' -m 2 --password-file /user/cloudera/passwordfile
 
-
+--
 sqoop-export --connect jdbc:mysql://quickstart:3306/sqoop_handson --username root --table altered_nyse_dividends --export-dir /user/cloudera/rawdata/handson_train/nyse --mapreduce-job-name 'nyse dividend mysql export' --fields-terminated-by ',' -m 1 --password-file /user/cloudera/passwordfile --columns exchange,stock_symbol,datestring,value
