@@ -26,7 +26,7 @@ create external table flight
 	weatherdelay smallint, nasdelay smallint, securitydelay smallint, lateaircraftdelay smallint)
 row format delimited
 fields terminated by ','
-location '/user/okmich20/output/handson_train/airline_performance/flights/processed';
+location '/user/okmich20/rawdata/handson_train/july/airline_performance/flights';
 
 
 -- creates an external table table on airline timing using parquet format
@@ -42,19 +42,19 @@ stored as parquet
 location '/user/okmich20/output/handson_train/airline_performance/flights/parquet';
 
 -- copy records from airline_timing to pq_airline_timing
-insert overwrite table pq_flight select * from flight;
+insert overwrite table pq_flight select * from flight where uniquecarrier <> 'UniqueCarrier';
 
 -- discussion on partitioning
 
 -- creates an external parquet table with partition (by year) on airline timing
 create external table pq_flight_part
-	(month tinyint,dayofmonth tinyint,dayofweek tinyint,
-	deptime smallint, crsdeptime smallint, arrtime smallint, crsarrtime smallint, 
-	uniquecarrier string, flightnum string, tailnum string, actualelapsedtime smallint,
-	crselapsedtime smallint, airtime smallint, arrdelay smallint, depdelay smallint, 
-	origin string, dest string, distance smallint, taxiin string, taxiout string,
-	cancelled string, cancellationcode string, diverted string, carrierdelay smallint,
-	weatherdelay smallint, nasdelay smallint, securitydelay smallint, lateaircraftdelay smallint)
+(month tinyint,dayofmonth tinyint,dayofweek tinyint,
+deptime smallint, crsdeptime smallint, arrtime smallint, crsarrtime smallint, 
+uniquecarrier string, flightnum string, tailnum string, actualelapsedtime smallint,
+crselapsedtime smallint, airtime smallint, arrdelay smallint, depdelay smallint, 
+origin string, dest string, distance smallint, taxiin string, taxiout string,
+cancelled string, cancellationcode string, diverted string, carrierdelay smallint,
+weatherdelay smallint, nasdelay smallint, securitydelay smallint, lateaircraftdelay smallint)
 partitioned by (year smallint)
 stored as parquet
 location '/user/okmich20/output/handson_train/airline_performance/flights/parquet_partd';
@@ -239,14 +239,13 @@ with serdeproperties (
    "separatorChar" = ",",
    "quoteChar"     = "\"",
    "escapeChar"    = "\\"
-)  
-stored as textfile
-location '/user/okmich20/rawdata/handson_train/airline_performance/airports';
+) 
+location '/user/okmich20/rawdata/handson_train/july/airline_performance/airports';
 
 
 -- create external table for carriers
 create external table carriers (
-    cdde varchar(4), 
+    code varchar(4), 
     description varchar(30)
 )
 row format serde 'org.apache.hadoop.hive.serde2.OpenCSVSerde'
@@ -256,7 +255,7 @@ with serdeproperties (
    "escapeChar"    = "\\"
 )  
 stored as textfile
-location '/user/okmich20/rawdata/handson_train/airline_performance/carriers';
+location '/user/okmich20/rawdata/handson_train/july/airline_performance/carriers';
 
 -- create external table for plane information
 create external table plane_info (
@@ -276,7 +275,7 @@ with serdeproperties (
    "escapeChar"    = "\\"
 )  
 stored as textfile
-location '/user/okmich20/rawdata/handson_train/airline_performance/plane_data';
+location '/user/okmich20/rawdata/handson_train/july/airline_performance/plane_data';
 
 
 -- inserting into hdfs directory as text file with non-default delimiter

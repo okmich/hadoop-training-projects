@@ -19,15 +19,23 @@ create temporary function gps_distance_from as 'com.livingsocial.hive.udf.gpsDis
 --- creating a hive view
 create view v_airports as select iata, concat(airport, ', ', city, ', ', state, ', ', country) address, airport, city, state, country, geolat, geolong from airports where iata <> 'iata';
 
+-- alter a view 
+alter view v_airports as select iata, concat(airport, ', ', city, ', ', state, ', ', country) address, airport, city, state, country, geolat, geolong from airports where iata <> 'iata';
 
--- query
-select from_airport, to_airport, MIN(dist) minimum_distance from 
-	(select tbl1.address from_airport, tbl2.address to_airport, gps_distance_from(tbl1.geolat, tbl1.geolong, tbl2.geolat, tbl2.geolong, 'km' ) dist from 
+-- to drop a view 
+drop view v_airports;
+
+-- create a view of airports and the distance between
+create view v_inter_airport_dist as 
+select tbl1.address from_airport, tbl2.address to_airport, gps_distance_from(tbl1.geolat, tbl1.geolong, tbl2.geolat, tbl2.geolong, 'km' ) dist from 
 			(select  iata, address, geolong, geolat from v_airports) tbl1
 		full outer join 
 			(select  iata, address, geolong, geolat from v_airports) tbl2
 	where tbl1.iata <> tbl2.iata
-	) v
+
+
+-- retrieve the two airport with minimum distance between them
+select from_airport, to_airport, MIN(dist) minimum_distance from v_inter_airport_dist v
 group by from_airport, to_airport
 order by minimum_distance 
 limit 10;
@@ -65,16 +73,4 @@ from flight_part f join v_inter_airports v
 on v.dist_key = concat(f.origin, f.dest)
 where year = 2008
 
-
-
-
--- some analytical query with the crime dataset
--- download the dataset from https://drive.google.com/open?id=0B0MdkEsxQHAQU1BIMVJuM2twVW8
--- download the scripts to prepare the hive database and tables from https://drive.google.com/drive/folders/0B0MdkEsxQHAQbjJtOHhMaEpuVUk?usp=sharing
-
-select method, count(1) from crime_incident group by method
-
-select method, shift, count(1) numOccur from crime_incident group by method, shift with rollup
-
-select method, shift, count(1) numOccur from crime_incident group by method, shift with cube
 

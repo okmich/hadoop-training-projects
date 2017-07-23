@@ -18,8 +18,9 @@
 -- we will use pig to pre-process the data to restrict the class to few features instead
 -- Table partitioning
 -- Joins
--- serdes and IOs
 -- User-defined functions (UDF) and custom UDFs
+-- serdes and IOs
+-- Hive Metastore will be introduced here. 
 
 
 
@@ -29,6 +30,5 @@
 
 --== Project 6 - Analysis of Forex tick data using Hive
 -- Advance concepts like aggregated queries 
--- Hive Metastore will be introduced here. 
 -- Cloudera Impala will also be used in this project.
 -- performance tuning.

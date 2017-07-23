@@ -8,7 +8,7 @@
 -- stock_volume,
 -- stock_price_adj_close
 
-
+select stock_symbol, sum(stock_volume) total_vol from tablename group by stock_symbol
 -- 1) Run the total stock_volume traded for each stock in the entire dataset. Store in a fashion order by total volumn in descending order
 -- 2) find the record with max volatility for each stock. Volatility is  stock_price_high - stock_price_low
 -- 3) find the average closing price for each stock in the entire dataset
@@ -63,3 +63,5 @@ STORE j_data INTO '/user/okmich20/output/handsontrain/pig/max_volatility_rec' US
 -- select concat(sym, (high_price - low_price)) key, ...... from nasdaq_daily_prices n
 -- join (select concat(sym, max(high_price - low_price)) key from nasdaq_daily_prices group by sym) v
 -- on v.key = n.key
+
+

@@ -1,0 +1,9 @@
+-- some analytical query with the crime dataset
+-- download the dataset from https://drive.google.com/open?id=0B0MdkEsxQHAQU1BIMVJuM2twVW8
+-- download the scripts to prepare the hive database and tables from https://drive.google.com/drive/folders/0B0MdkEsxQHAQbjJtOHhMaEpuVUk?usp=sharing
+
+select method, count(1) from crime_incident group by method
+
+select method, shift, count(1) numOccur from crime_incident group by method, shift with rollup
+
+select method, shift, count(1) numOccur from crime_incident group by method, shift with cube

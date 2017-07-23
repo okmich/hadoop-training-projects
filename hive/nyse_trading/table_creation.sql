@@ -21,7 +21,7 @@ create table tbl_nasdaq_daily_prices_parquet (
 stored as parquet;
 
 --Create an external table for NASDAQ daily prices data set.
-create external table nasdaq_daily_prices (
+create external table nasdaq_daily_prices_ext (
 	exchange_name string,stock_symbol string, tdate string,stock_price_open float,
 	stock_price_high float,stock_price_low float,stock_price_close float,
 	stock_volume int, stock_price_adj_close float
