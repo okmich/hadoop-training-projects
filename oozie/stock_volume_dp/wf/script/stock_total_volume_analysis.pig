@@ -1,6 +1,6 @@
 
 -- load the data storage directory
-data = LOAD '/user/cloudera/rawdata/handson_train/nasdaq_daily_prices' USING PigStorage(',') AS (exchange:chararray,stock_symbol:chararray,date:chararray,stock_price_open:float,stock_price_high:float,stock_price_low:float,stock_price_close:float,stock_volume:int,stock_price_adj_close:float);
+data = LOAD '/user/cloudera/rawdata/handson_train/july/pig/nasdaq_daily_prices' USING PigStorage(',') AS (exchange:chararray,stock_symbol:chararray,date:chararray,stock_price_open:float,stock_price_high:float,stock_price_low:float,stock_price_close:float,stock_volume:int,stock_price_adj_close:float);
 
 -- incase the data from sqoop still contains the header, it is important to filter it out
 filtered_data = FILTER data BY exchange != 'exchange';

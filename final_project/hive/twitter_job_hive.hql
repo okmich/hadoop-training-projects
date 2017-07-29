@@ -21,7 +21,7 @@ create external table job_tweets (
   follower_count int
 )
 stored as avro
-location '/user/okmich20/output/handson_train/hive/twitterjobs';
+location '/user/cloudera/output/handson_train/hive/twitterjobs';
 tblproperties('avro.schema.url'='/user/okmich20/output/handson_train/hive/twitter_avro_schema/twitter_jobs.avsc');
 
 -- sample query to load all job postings in english
