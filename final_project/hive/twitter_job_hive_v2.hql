@@ -1,11 +1,11 @@
-create database if not exists twitterjob ;
+create database if not exists twitterdb ;
 
-alter database twitterjob 
+alter database twitterdb 
 set dbproperties('table.creator'='Michael Enudi');
 
-use twitterjob;
+use twitterdb;
 
-create external table job_tweets (
+create external table tweets (
   id bigint,   
   ts bigint, 
   twtlang string, 
@@ -18,6 +18,7 @@ create external table job_tweets (
   agent_desc string, 
   agent_name string, 
   agent_image_url string,
+  screen_name string,
   follower_count int
 )
 partitioned by (
@@ -27,8 +28,8 @@ partitioned by (
   hour string
 )
 stored as avro
-location '/user/cloudera/output/handson_train/flume/javaJobTweet';
-; -- tblproperties('avro.schema.url'='/user/okmich20/output/handson_train/hive/twitter_avro_schema/twitter_jobs.avsc');
+location '/user/cloudera/output/handson_train/javaJobTweet'
+tblproperties('avro.schema.url'='/user/cloudera/output/handson_train/hive/twitter_avro_schema/twitter_avro_schema.avsc');
 
 -- sample query to load all job postings in english
---select * from job_tweets where twtlang = 'en';
+--select * from tweets where twtlang = 'en';

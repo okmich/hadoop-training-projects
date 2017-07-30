@@ -1,6 +1,6 @@
-use twitterjob;
+use twitterdb;
 
-alter table job_tweets add partition(year=${hiveconf:year}, month=${hiveconf:month}, day=${hiveconf:day}, hour=${hiveconf:hour}) location '/user/cloudera/output/handson_train/hive/javaJobTweet/${hiveconf:year}/${hiveconf:month}/${hiveconf:day}/${hiveconf:hour}';
+alter table tweets add partition(year=${hiveconf:year}, month=${hiveconf:month}, day=${hiveconf:day}, hour=${hiveconf:hour}) location '/user/cloudera/output/handson_train/javaJobTweet/${hiveconf:year}/${hiveconf:month}/${hiveconf:day}/${hiveconf:hour}';
 
 
 

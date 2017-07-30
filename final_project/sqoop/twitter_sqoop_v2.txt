@@ -1,7 +1,3 @@
-sqoop-export --connect jdbc:mysql://quickstart.cloudera:3306/final_project --username root \
---export-dir /user/cloudera/output/handson_train/hive/javaJobTweet/2017/06/04/07 --mapreduce-job-name SqoopExportingTwitterJobs  --columns id,ts,twtlang,created_at,tweet_text,url,source,hashtags,agent_location,agent_desc,agent_name,agent_image_url,follower_count --table twitter_job --password-file /user/cloudera/sqoop-passworfile
-
-
 -- using hcatlog partition
-sqoop-export --connect jdbc:mysql://quickstart.cloudera:3306/final_project --username root --mapreduce-job-name SqoopExportingTwitterJobs --table twitter_job --password-file /user/cloudera/sqoop-passworfile --hcatalog-database twitterjob --hcatalog-table job_tweets --hcatalog-partition-keys year,month,day,hour --hcatalog-partition-values 2017,06,04,07
+sqoop-export --connect jdbc:mysql://quickstart.cloudera:3306/final_project --username root --mapreduce-job-name SqoopExportingTwitterJobs --table twitter_job --password-file /user/cloudera/passwordfile --hcatalog-database  twitterdb --hcatalog-table tweets --hcatalog-partition-keys year,month,day,hour --hcatalog-partition-values 2017,07,29,10
 
