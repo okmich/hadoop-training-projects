@@ -10,4 +10,54 @@ sqoop list-tables --connect jdbc:mysql://iop-bi-master.imdemocloud.com:3306/worl
 ## evaluate show tables
 sqoop eval --connect jdbc:mysql://iop-bi-master.imdemocloud.com:3306/world --username root --password root --query 'show tables'
 
+## code generation for the country table
+sqoop-codegen --connect jdbc:mysql://iop-bi-master.imdemocloud.com:3306/world --username root --table country -P
+
 #####TABLE AND DATA IMPORT
+## import a table with defaults
+sqoop-import --connect jdbc:mysql://iop-bi-master.imdemocloud.com:3306/world --username root --password root --table city --target-dir /user/okmich20/output/handson_train/august/sqoop/import/city-default
+
+## import a table with defaults with a single mapper
+sqoop-import --connect jdbc:mysql://iop-bi-master.imdemocloud.com:3306/world --username root --password root --table city --target-dir /user/okmich20/output/handson_train/august/sqoop/import/city-default-one-map -m 1 
+
+## import a table with defaults with a single mapper to an existing folder
+sqoop-import --connect jdbc:mysql://iop-bi-master.imdemocloud.com:3306/world --username root --table city --target-dir /user/okmich20/output/handson_train/august/sqoop/import/city-default-one-map -m 1 --append -P
+
+## import a table with defaults with a single mapper and with pipe-delimited records
+sqoop-import --connect jdbc:mysql://iop-bi-master.imdemocloud.com:3306/world --username root --table city --target-dir /user/okmich20/output/handson_train/august/sqoop/import/city-pipe-one-map -m 1 --fields-terminated-by '|' -P
+
+## import a table with defaults with a single mapper and with unicode ctrl a-delimited records
+sqoop-import --connect jdbc:mysql://iop-bi-master.imdemocloud.com:3306/world --username root --table city --target-dir /user/okmich20/output/handson_train/august/sqoop/import/city-uni1-one-map -m 1 --fields-terminated-by '\0001' -P
+
+##-- (classwork) import all countries into 1 file in a true csv format, "nanes are quote", comman, escaped
+sqoop-import --connect jdbc:mysql://iop-bi-master.imdemocloud.com:3306/world --username root --table city --target-dir /user/okmich20/output/handson_train/august/sqoop/import/city-csv-one-map -m 1 --fields-terminated-by ',' --enclosed-by "\"" --escaped-by "\\"  -P
+
+
+##-- Import table with different format (parquet file) into a single file
+sqoop-import --connect jdbc:mysql://iop-bi-master.imdemocloud.com:3306/world --username root --table city --target-dir /user/okmich20/output/handson_train/august/sqoop/import/city_parquet -m 1 --as-parquetfile -P
+
+
+##-- Import table with different format (avro file) into a single file
+sqoop-import --connect jdbc:mysql://iop-bi-master.imdemocloud.com:3306/world --username root --table city --target-dir /user/okmich20/output/handson_train/august/sqoop/import/city-avro --as-avrodatafile -m 1 -P
+
+##-- Import table with different format (sequence file) into a single file
+sqoop-import --connect jdbc:mysql://iop-bi-master.imdemocloud.com:3306/world --username root --table city --target-dir /user/okmich20/output/handson_train/august/sqoop/import/city-seq -m 1 --as-sequencefile -P
+
+##-- Import table with different format (text file - compressed) into a single file
+sqoop-import --connect jdbc:mysql://iop-bi-master.imdemocloud.com:3306/world --username root --table city --target-dir /user/okmich20/output/handson_train/august/sqoop/import/city-txt-z -m 1 --fields-terminated-by '\0001' -z --compression-codec bzip2 -P
+
+
+##-- Import table with where clause and avro file 
+sqoop-import --connect jdbc:mysql://iop-bi-master.imdemocloud.com:3306/world --username root --table city --target-dir /user/okmich20/output/handson_train/august/sqoop/import/city-where -m 2 --as-avrodatafile -z --compression-codec bzip2 --where "countrycode in ('USA', 'CHN')" -P
+
+##-- Import table with where clause with avro format using a password file
+## password file was created with the following command
+## echo "cloudera" > passwordfile
+## hdfs dfs -moveFromLocal passwordfile /user/cloudera
+## hdfs dfs -chmod 600 /user/cloudera/passwordfile
+## make sure that there is not carriage return character after the cloudera password in the file
+## append the output to the previous result from the where clause exercise
+sqoop-import --connect jdbc:mysql://iop-bi-master.imdemocloud.com:3306/world --username root --table city --target-dir /user/okmich20/output/handson_train/august/sqoop/import/city-where -m 2 --as-avrodatafile -z --compression-codec bzip2 --append --where "countrycode in ('USA', 'CHN')" --password-file /user/okmich20/passwordfile
+
+##-- (assignment) Import all tables in a schema with avro format
+sqoop-import-all-tables --connect jdbc:mysql://iop-bi-master.imdemocloud.com:3306/world --username root  --warehouse-dir /user/okmich20/output/handson_train/august/sqoop/importall/world -m 1 --as-avrodatafile --password-file /user/okmich20/passwordfile
