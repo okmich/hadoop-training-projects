@@ -1,0 +1,13 @@
+## Sqoop: World database In IBM Cloud
+## ===============
+
+## list all schema in a database server
+sqoop list-databases --connect jdbc:mysql://iop-bi-master.imdemocloud.com:3306/ --username root --password root 
+
+## list all tables in a schema
+sqoop list-tables --connect jdbc:mysql://iop-bi-master.imdemocloud.com:3306/world --username root --password root
+
+## evaluate show tables
+sqoop eval --connect jdbc:mysql://iop-bi-master.imdemocloud.com:3306/world --username root --password root --query 'show tables'
+
+#####TABLE AND DATA IMPORT
