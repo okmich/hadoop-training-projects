@@ -1,12 +1,12 @@
 --query to create a view for film display. Later used as a table by hive
 create view v_film as
 select f.film_id, title, description, release_year, f.language_id, original_language_id, rental_duration, rental_rate, length, replacement_cost, rating, replace(special_features, ',','|') special_features, f.last_update, l.name language,
-concat(fc.category_id, '=',c.name) category, group_concat(distinct concat(a.actor_id, '=',a.first_name, ' ', a.last_name) order by a.first_name, a.last_name separator '|') actors
+cast(concat(fc.category_id, '=',c.name) as char(100)) category, cast(group_concat(distinct concat(a.actor_id, '=',a.first_name, ' ', a.last_name) order by a.first_name, a.last_name separator '|') as char(255)) actors
 from film f join language l on l.language_id = f.language_id
 join film_category fc on fc.film_id = f.film_id
 join category c on c.category_id = fc.category_id
 left join film_actor fa on fa.film_id = f.film_id
-  left join actor a on a.actor_id = fa.actor_id
+left join actor a on a.actor_id = fa.actor_id
 group by f.film_id
 
 -- a query to be used as is by sqoop

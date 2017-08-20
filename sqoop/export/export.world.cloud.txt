@@ -1,0 +1,6 @@
+-- Export tables
+sqoop-export --connect jdbc:mysql://iop-bi-master.imdemocloud.com:3306/sqoop_handson --username root --table nyse_dividends --export-dir /user/okmich20/rawdata/handson_train/nyse --mapreduce-job-name 'nyse dividend mysql export' --fields-terminated-by ',' -m 2 --password-file /user/okmich20/passwordfile
+
+-- sometimes the columns are not exactly in the same order as the file columns.
+-- so you can use the ---columns argument to rearrange things
+sqoop-export --connect jdbc:mysql://iop-bi-master.imdemocloud.com:3306/sqoop_handson --username root --table altered_nyse_dividends --export-dir /user/okmich20/rawdata/handson_train/nyse --mapreduce-job-name 'nyse dividend mysql export' --fields-terminated-by ',' -m 1 --password-file /user/okmich20/passwordfile --columns exchange,stock_symbol,datestring,value

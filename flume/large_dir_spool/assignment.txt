@@ -12,7 +12,7 @@ The watch_dir contains 4 categories of files
 	3. reports_xxxxxxxx.csv - any report for stocks for that day. xxxxxxxx represents yyyy mm dd
 	4. symbols_xxxxxxxx.txt - symbols traded for the day. xxxxxxxx represents yyyy mm dd
 
-Note: This project is only interested in the prices_xxxxxxxx.csv files. Other files MUST be ignored in the file streaming configuration.
+Note: This project is only interested in the prices_xxxxxxxx.csv files. Other files MUST be ignored in the file streaming configuration. Files should be deleted once completed read.
 
 File Format
 ============
