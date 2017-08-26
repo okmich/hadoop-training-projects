@@ -1,0 +1,33 @@
+pig latin
+	-
+	-	operators (verbs)
+			transformations
+			Actions (STORE, DUMP)
+			Utility
+		functions  (noun)
+		expression and assignments
+
+Pig - Strongly type (Data Types)
+	char
+	chararray
+	int
+	long
+	float
+	double
+	boolean
+
+
+	bag			{}
+	tuple       ()
+	map         k#V
+
+Variable (you don't have to initialize)
+
+Every line has to end with a semi colon ;
+
+Pig contains three sets to operators 
+	transformations (Plan)
+	Actions
+	Utility
+
+Lazy evaluation/execution

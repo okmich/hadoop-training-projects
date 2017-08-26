@@ -10,25 +10,41 @@
 
 -- 1) Run the total stock_volume traded for each stock in the entire dataset. Store in a fashion order by total volumn in descendeing order
 
--- load the data storage directory
-data = LOAD '${inputDir}' USING PigStorage(',') AS (exchange:chararray,stock_symbol:chararray,date:chararray,stock_price_open:float,stock_price_high:float,stock_price_low:float,stock_price_close:float,stock_volume:int,stock_price_adj_close:float);
+	- 	load the data 							LOAD
+	-	remove the header						FILTER
+	- 	get the stock symbol and the volume 	FOR
+	-	group the data set by stock system
+	- 	sum the volume property for each group
+	-	sort by volumn in desc
 
--- incase the data from sqoop still contains the header, it is important to filter it out
-filtered_data = FILTER data BY exchange != 'exchange';
+--load the data
+data = LOAD '/user/okmich20/rawdata/handson_train/nasdaq_daily_prices' USING PigStorage(',') AS (exchange:chararray,stock_symbol:chararray,date:chararray,stock_price_open:float,stock_price_high:float,stock_price_low:float,stock_price_close:float,stock_volume:int,stock_price_adj_close:float);
 
--- project only the stock_symbol and the volumn
-proj_data = FOREACH filtered_data GENERATE stock_symbol, stock_volume;
+-- remove the header
+clean_data = FILTER data BY date != 'date';
 
---group the available records by the symbol
-grp_data = GROUP proj_data BY stock_symbol;
+-- get the stock symbol and the volume (project)
+proj_data = FOREACH clean_data GENERATE stock_symbol, stock_volume;
 
---reduce the grouped data by summing the groups
-agg_data = FOREACH grp_data GENERATE group AS symbol, SUM(proj_data.stock_volume) AS total_vol;
+--group the data set by stock system
+grouped_data = GROUP proj_data BY stock_symbol;
 
-sorted_data = ORDER agg_data BY total_vol DESC;
+--for each group sum up the stock volume
+agg_data = FOREACH grouped_data GENERATE group AS stock_symbol, SUM(proj_data.stock_volume) AS total_volume;
 
--- store records in the ouput location
-STORE agg_data INTO '${outputDir}';
+-- sort agg_data in descending order of total_volumn
+sorted_data = ORDER agg_data BY total_volume DESC;
+
+-- preview your result
+DUMP sorted_data;
+
+STORE sorted_data INTO '/user/okmich20/output/handsontrain/august/total_stock_volume_default'; //default a tab-delimited text file 
+
+STORE sorted_data INTO '/user/okmich20/output/handsontrain/august/total_stock_volume_json' USING JsonStorage();
+
+STORE sorted_data INTO '/user/okmich20/output/handsontrain/august/total_stock_volume_avro' USING AvroStorage();
+
+STORE sorted_data INTO '/user/okmich20/output/handsontrain/august/total_stock_volume_csv' USING PigStorage(',');
 
 -- describe 
 -- explain 
