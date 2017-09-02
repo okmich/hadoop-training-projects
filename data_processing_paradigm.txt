@@ -1,4 +1,4 @@
-MapReduce Programming Paradigm vs SQL
+Big data Processing Paradigm vs SQL
 =================================
 Projection			- SELECT 													Map class
 Transformation		- applying a scalar function on a item	upper(), an expr	Map

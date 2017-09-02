@@ -2,7 +2,7 @@
 -- output 
 -- genre, totalNumberofMovies
 
-register '/home/cloudera/classes/hadoop-training-projects/pig/movielens/piggybank-0.16.0.jar'
+register '/home/cloudera/classes/hadoop-training-projects/pig/movielens/piggybank-0.16.0.jar';
 DEFINE myCSVLoader org.apache.pig.piggybank.storage.CSVLoader();
 DEFINE myXlsStorage org.apache.pig.piggybank.storage.CSVExcelStorage();
 

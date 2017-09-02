@@ -22,22 +22,13 @@ stored as parquet;
 
 --Create an external table for NASDAQ daily prices data set.
 create external table nasdaq_daily_prices_ext (
-	exchange_name string,stock_symbol string, tdate string,stock_price_open float,
-	stock_price_high float,stock_price_low float,stock_price_close float,
-	stock_volume int, stock_price_adj_close float
+exchange_name string,stock_symbol string, tdate string,stock_price_open float,
+stock_price_high float,stock_price_low float,stock_price_close float,
+stock_volume int, stock_price_adj_close float
 )
 row format delimited
 fields terminated by ','
-location '/user/cloudera/rawdata/handson_train/nasdaq_daily_prices';
-
--- Create an external table for NASDAQ dividends data set.
-create external table nasdaq_dividends (
-	exchange_name string,stock_symbol string, tdate string, dividends float
-)
-row format delimited
-fields terminated by ','
-location '/user/cloudera/rawdata/handson_train/feb/nyse';
-
+location '/user/okmich20/rawdata/handson_train/nasdaq_daily_prices';
 
 --create and load an avro table simultaneously
 create table nasdaq_daily_prices_avro
