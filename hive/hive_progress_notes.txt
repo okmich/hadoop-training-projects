@@ -17,9 +17,9 @@
 --== Project 5 - Querying Airline on-time performance dataset using Hive
 -- we will use pig to pre-process the data to restrict the class to few features instead
 -- Table partitioning
+-- serdes and IOs
 -- Joins
 -- User-defined functions (UDF) and custom UDFs
--- serdes and IOs
 -- Hive Metastore will be introduced here. 
 
 

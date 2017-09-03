@@ -3,7 +3,7 @@ select flightnum, year, month, dayofmonth, dayofweek, c.description, f.tailnum, 
 	CONCAT(a.airport, ' ', a.city, ', ', a.state, ', ', a.country ) origin, 
 	CONCAT(b.airport, ' ', b.city, ', ', b.state, ', ', b.country ) dest 
 from flight f 
-	left join carriers c on f.uniquecarrier = c.cdde
+	left join carriers c on f.uniquecarrier = c.code
 	left join airports a on f.origin = a.iata
 	left join airports b on f.dest = b.iata
 	left join plane_info p on p.tailnum = f.tailnum;
@@ -19,7 +19,7 @@ create temporary function gps_distance_from as 'com.livingsocial.hive.udf.gpsDis
 
 -- create a view of airports and the distance between them
 create view v_inter_airport_dist as 
-select tbl1.iata from_iata, tbl1.address from_airport, tbl2.iata to_iata, tbl2.address to_airport, gps_distance_from(tbl1.geolat, tbl1.geolong, tbl2.geolat, tbl2.geolong, 'km' ) dist from 
+select tbl1.iata from_iata, tbl1.address from_airport, tbl2.iata to_iata, tbl2.address to_airport, gps_distance_from(tbl1.geolat, tbl1.geolong, tbl2.geolat, tbl2.geolong, 'km') dist from 
 			(select  iata, address, geolong, geolat from v_airports) tbl1
 		full outer join 
 			(select  iata, address, geolong, geolat from v_airports) tbl2

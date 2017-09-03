@@ -22,9 +22,9 @@ stored as parquet;
 
 --Create an external table for NASDAQ daily prices data set.
 create external table nasdaq_daily_prices_ext (
-exchange_name string,stock_symbol string, tdate string,stock_price_open float,
-stock_price_high float,stock_price_low float,stock_price_close float,
-stock_volume int, stock_price_adj_close float
+	exchange_name string,stock_symbol string, tdate string,stock_price_open float,
+	stock_price_high float,stock_price_low float,stock_price_close float,
+	stock_volume int, stock_price_adj_close float
 )
 row format delimited
 fields terminated by ','
@@ -35,12 +35,6 @@ create table nasdaq_daily_prices_avro
 stored as avro
 as
 select * from tbl_nasdaq_daily_prices;
-
--- create a managed avro table
-create table nasdaq_dividends_avro (
-	exchange_name string,stock_symbol string, tdate string, dividends float
-)
-stored as avro;
 
 --alter table to add the data location
 alter table nasdaq_dividends_avro

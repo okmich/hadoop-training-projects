@@ -26,18 +26,18 @@ create external table flight
 	weatherdelay smallint, nasdelay smallint, securitydelay smallint, lateaircraftdelay smallint)
 row format delimited
 fields terminated by ','
-location '/user/okmich20/rawdata/handson_train/july/airline_performance/flights';
+location '/user/okmich20/output/handson_train/airline_performance/flights/processed';
 
 
 -- creates an external table table on airline timing using parquet format
 create external table pq_flight 
-	(year smallint,month tinyint,dayofmonth tinyint,dayofweek tinyint,
-	deptime smallint, crsdeptime smallint, arrtime smallint, crsarrtime smallint, 
-	uniquecarrier string, flightnum string, tailnum string, actualelapsedtime smallint,
-	crselapsedtime smallint, airtime smallint, arrdelay smallint, depdelay smallint, 
-	origin string, dest string, distance smallint, taxiin string, taxiout string,
-	cancelled string, cancellationcode string, diverted string, carrierdelay smallint,
-	weatherdelay smallint, nasdelay smallint, securitydelay smallint, lateaircraftdelay smallint)
+(year smallint,month tinyint,dayofmonth tinyint,dayofweek tinyint,
+deptime smallint, crsdeptime smallint, arrtime smallint, crsarrtime smallint, 
+uniquecarrier string, flightnum string, tailnum string, actualelapsedtime smallint,
+crselapsedtime smallint, airtime smallint, arrdelay smallint, depdelay smallint, 
+origin string, dest string, distance smallint, taxiin string, taxiout string,
+cancelled string, cancellationcode string, diverted string, carrierdelay smallint,
+weatherdelay smallint, nasdelay smallint, securitydelay smallint, lateaircraftdelay smallint)
 stored as parquet
 location '/user/okmich20/output/handson_train/airline_performance/flights/parquet';
 
@@ -113,7 +113,7 @@ select
 from airline_timing where year = 2007;
 
 
-insert overwrite table pq_flight_part2 partition(year=2006, month=1)
+insert overwrite table pq_flight_part2 partition(year=2007, month=1)
 	select 
 	dayofmonth,         
 	dayofweek,          
@@ -142,7 +142,7 @@ insert overwrite table pq_flight_part2 partition(year=2006, month=1)
 	nasdelay ,          
 	securitydelay    ,  
 	lateaircraftdelay 
-from pq_flight where year = 2006 and month=1;
+from pq_flight where year = 2007 and month=1;
 
 -- droping a partition
 -- not that since this is an external table , the partition will be dropped from the hive metastore but will still be available on the distributed file system
@@ -240,7 +240,7 @@ with serdeproperties (
    "quoteChar"     = "\"",
    "escapeChar"    = "\\"
 ) 
-location '/user/okmich20/rawdata/handson_train/july/airline_performance/airports';
+location '/user/okmich20/rawdata/handson_train/airline_performance/airports';
 
 
 -- create external table for carriers
@@ -255,7 +255,7 @@ with serdeproperties (
    "escapeChar"    = "\\"
 )  
 stored as textfile
-location '/user/okmich20/rawdata/handson_train/july/airline_performance/carriers';
+location '/user/okmich20/rawdata/handson_train/airline_performance/carriers';
 
 -- create external table for plane information
 create external table plane_info (
@@ -275,7 +275,7 @@ with serdeproperties (
    "escapeChar"    = "\\"
 )  
 stored as textfile
-location '/user/okmich20/rawdata/handson_train/july/airline_performance/plane_data';
+location '/user/okmich20/rawdata/handson_train/airline_performance/plane_data';
 
 
 -- inserting into hdfs directory as text file with non-default delimiter
