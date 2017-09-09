@@ -20,7 +20,7 @@
 -- serdes and IOs
 -- Joins
 -- User-defined functions (UDF) and custom UDFs
--- Hive Metastore will be introduced here. 
+-- Hive Metastore will be introduced here. --HCatalog
 
 
 

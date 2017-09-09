@@ -1,0 +1,2 @@
+symbol,end_date,amend,period_focus,fiscal_year,doc_type,revenues,op_income,net_income,eps_basic,eps_diluted,dividend,assets,cur_assets,cur_liab,cash,equity,cash_flow_op,cash_flow_inv,cash_flow_fin
+SKY,2015-11-30,False,Q2,2016,10-Q,58684000.0,1827000.0,1706000.0,0.2,0.2,0.0,52649000.0,34034000.0,16557000.0,6804000.0,24280000.0,2079000.0,-270000.0,

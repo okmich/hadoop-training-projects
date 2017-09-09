@@ -1,0 +1,2 @@
+symbol,end_date,amend,period_focus,fiscal_year,doc_type,revenues,op_income,net_income,eps_basic,eps_diluted,dividend,assets,cur_assets,cur_liab,cash,equity,cash_flow_op,cash_flow_inv,cash_flow_fin
+EGHT,2016-03-31,True,FY,2016,10-K,209336000.0,-7074000.0,-5120000.0,-0.06,-0.06,0.0,313452000.0,185900000.0,34734000.0,33576000.0,275306000.0,23567000.0,-36295000.0,-7248000.0

@@ -1,0 +1,3 @@
+symbol,end_date,amend,period_focus,fiscal_year,doc_type,revenues,op_income,net_income,eps_basic,eps_diluted,dividend,assets,cur_assets,cur_liab,cash,equity,cash_flow_op,cash_flow_inv,cash_flow_fin
+UUU,2016-06-30,False,Q1,2017,10-Q,3178607.0,-188357.0,-389679.0,-0.17,-0.17,0.0,18883704.0,7347253.0,3068371.0,175753.0,15815333.0,288221.0,-161305.0,-313891.0
+CUDA,2016-08-31,False,Q2,2017,10-Q,87930000.0,6131000.0,2437000.0,0.05,0.05,0.0,435982000.0,262268000.0,286015000.0,139173000.0,-15761000.0,32629000.0,-8313000.0,-4260000.0

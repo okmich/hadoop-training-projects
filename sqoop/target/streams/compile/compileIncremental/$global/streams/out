@@ -1,0 +1,338 @@
+[0m[[0mdebug[0m] [0m[naha] [0m
+[0m[[0mdebug[0m] [0m[naha] Initial source changes: [0m
+[0m[[0mdebug[0m] [0m[naha] 	removed:Set()[0m
+[0m[[0mdebug[0m] [0m[naha] 	added: Set(/home/cloudera/classes/hadoop-training-projects/sqoop/altered_nyse_dividends.java, /home/cloudera/classes/hadoop-training-projects/sqoop/nyse_dividends.java)[0m
+[0m[[0mdebug[0m] [0m[naha] 	modified: Set()[0m
+[0m[[0mdebug[0m] [0m[naha] Invalidated products: Set()[0m
+[0m[[0mdebug[0m] [0m[naha] External API changes: API Changes: Set()[0m
+[0m[[0mdebug[0m] [0m[naha] Modified binary dependencies: Set()[0m
+[0m[[0mdebug[0m] [0m[naha] Initial directly invalidated sources: Set(/home/cloudera/classes/hadoop-training-projects/sqoop/altered_nyse_dividends.java, /home/cloudera/classes/hadoop-training-projects/sqoop/nyse_dividends.java)[0m
+[0m[[0mdebug[0m] [0m[naha] [0m
+[0m[[0mdebug[0m] [0m[naha] Sources indirectly invalidated by:[0m
+[0m[[0mdebug[0m] [0m[naha] 	product: Set()[0m
+[0m[[0mdebug[0m] [0m[naha] 	binary dep: Set()[0m
+[0m[[0mdebug[0m] [0m[naha] 	external source: Set()[0m
+[0m[[0mdebug[0m] [0mAll initially invalidated sources: Set(/home/cloudera/classes/hadoop-training-projects/sqoop/altered_nyse_dividends.java, /home/cloudera/classes/hadoop-training-projects/sqoop/nyse_dividends.java)[0m
+[0m[[0mdebug[0m] [0m[naha] Initial set of included nodes: Set(/home/cloudera/classes/hadoop-training-projects/sqoop/altered_nyse_dividends.java, /home/cloudera/classes/hadoop-training-projects/sqoop/nyse_dividends.java)[0m
+[0m[[0mdebug[0m] [0m[naha] Recompiling all 2 sources: invalidated sources (2) exceeded 50.0% of all sources[0m
+[0m[[0minfo[0m] [0mCompiling 2 Java sources to /home/cloudera/classes/hadoop-training-projects/sqoop/target/scala-2.10/classes...[0m
+[0m[[0mdebug[0m] [0mAttempting to call com.sun.tools.javac.api.JavacTool@6eb81e3d directly...[0m
+[0m[[31merror[0m] [0m/home/cloudera/classes/hadoop-training-projects/sqoop/altered_nyse_dividends.java:7: package org.apache.hadoop.io does not exist[0m
+[0m[[31merror[0m] [0mimport org.apache.hadoop.io.BytesWritable;[0m
+[0m[[31merror[0m] [0m/home/cloudera/classes/hadoop-training-projects/sqoop/altered_nyse_dividends.java:8: package org.apache.hadoop.io does not exist[0m
+[0m[[31merror[0m] [0mimport org.apache.hadoop.io.Text;[0m
+[0m[[31merror[0m] [0m/home/cloudera/classes/hadoop-training-projects/sqoop/altered_nyse_dividends.java:9: package org.apache.hadoop.io does not exist[0m
+[0m[[31merror[0m] [0mimport org.apache.hadoop.io.Writable;[0m
+[0m[[31merror[0m] [0m/home/cloudera/classes/hadoop-training-projects/sqoop/altered_nyse_dividends.java:10: package org.apache.hadoop.mapred.lib.db does not exist[0m
+[0m[[31merror[0m] [0mimport org.apache.hadoop.mapred.lib.db.DBWritable;[0m
+[0m[[31merror[0m] [0m/home/cloudera/classes/hadoop-training-projects/sqoop/altered_nyse_dividends.java:11: package com.cloudera.sqoop.lib does not exist[0m
+[0m[[31merror[0m] [0mimport com.cloudera.sqoop.lib.JdbcWritableBridge;[0m
+[0m[[31merror[0m] [0m/home/cloudera/classes/hadoop-training-projects/sqoop/altered_nyse_dividends.java:12: package com.cloudera.sqoop.lib does not exist[0m
+[0m[[31merror[0m] [0mimport com.cloudera.sqoop.lib.DelimiterSet;[0m
+[0m[[31merror[0m] [0m/home/cloudera/classes/hadoop-training-projects/sqoop/altered_nyse_dividends.java:13: package com.cloudera.sqoop.lib does not exist[0m
+[0m[[31merror[0m] [0mimport com.cloudera.sqoop.lib.FieldFormatter;[0m
+[0m[[31merror[0m] [0m/home/cloudera/classes/hadoop-training-projects/sqoop/altered_nyse_dividends.java:14: package com.cloudera.sqoop.lib does not exist[0m
+[0m[[31merror[0m] [0mimport com.cloudera.sqoop.lib.RecordParser;[0m
+[0m[[31merror[0m] [0m/home/cloudera/classes/hadoop-training-projects/sqoop/altered_nyse_dividends.java:15: package com.cloudera.sqoop.lib does not exist[0m
+[0m[[31merror[0m] [0mimport com.cloudera.sqoop.lib.BooleanParser;[0m
+[0m[[31merror[0m] [0m/home/cloudera/classes/hadoop-training-projects/sqoop/altered_nyse_dividends.java:16: package com.cloudera.sqoop.lib does not exist[0m
+[0m[[31merror[0m] [0mimport com.cloudera.sqoop.lib.BlobRef;[0m
+[0m[[31merror[0m] [0m/home/cloudera/classes/hadoop-training-projects/sqoop/altered_nyse_dividends.java:17: package com.cloudera.sqoop.lib does not exist[0m
+[0m[[31merror[0m] [0mimport com.cloudera.sqoop.lib.ClobRef;[0m
+[0m[[31merror[0m] [0m/home/cloudera/classes/hadoop-training-projects/sqoop/altered_nyse_dividends.java:18: package com.cloudera.sqoop.lib does not exist[0m
+[0m[[31merror[0m] [0mimport com.cloudera.sqoop.lib.LargeObjectLoader;[0m
+[0m[[31merror[0m] [0m/home/cloudera/classes/hadoop-training-projects/sqoop/altered_nyse_dividends.java:19: package com.cloudera.sqoop.lib does not exist[0m
+[0m[[31merror[0m] [0mimport com.cloudera.sqoop.lib.SqoopRecord;[0m
+[0m[[31merror[0m] [0m/home/cloudera/classes/hadoop-training-projects/sqoop/altered_nyse_dividends.java:37: cannot find symbol[0m
+[0m[[31merror[0m] [0m  symbol: class SqoopRecord[0m
+[0m[[31merror[0m] [0mpublic class altered_nyse_dividends extends SqoopRecord  implements DBWritable, Writable {[0m
+[0m[[31merror[0m] [0m/home/cloudera/classes/hadoop-training-projects/sqoop/altered_nyse_dividends.java:37: cannot find symbol[0m
+[0m[[31merror[0m] [0m  symbol: class DBWritable[0m
+[0m[[31merror[0m] [0mpublic class altered_nyse_dividends extends SqoopRecord  implements DBWritable, Writable {[0m
+[0m[[31merror[0m] [0m/home/cloudera/classes/hadoop-training-projects/sqoop/altered_nyse_dividends.java:37: cannot find symbol[0m
+[0m[[31merror[0m] [0m  symbol: class Writable[0m
+[0m[[31merror[0m] [0mpublic class altered_nyse_dividends extends SqoopRecord  implements DBWritable, Writable {[0m
+[0m[[31merror[0m] [0m/home/cloudera/classes/hadoop-training-projects/sqoop/altered_nyse_dividends.java:158: cannot find symbol[0m
+[0m[[31merror[0m] [0m  symbol:   class LargeObjectLoader[0m
+[0m[[31merror[0m] [0m  location: class altered_nyse_dividends[0m
+[0m[[31merror[0m] [0m  public void loadLargeObjects(LargeObjectLoader __loader)[0m
+[0m[[31merror[0m] [0m/home/cloudera/classes/hadoop-training-projects/sqoop/altered_nyse_dividends.java:161: cannot find symbol[0m
+[0m[[31merror[0m] [0m  symbol:   class LargeObjectLoader[0m
+[0m[[31merror[0m] [0m  location: class altered_nyse_dividends[0m
+[0m[[31merror[0m] [0m  public void loadLargeObjects0(LargeObjectLoader __loader)[0m
+[0m[[31merror[0m] [0m/home/cloudera/classes/hadoop-training-projects/sqoop/altered_nyse_dividends.java:257: cannot find symbol[0m
+[0m[[31merror[0m] [0m  symbol:   class DelimiterSet[0m
+[0m[[31merror[0m] [0m  location: class altered_nyse_dividends[0m
+[0m[[31merror[0m] [0m  private static final DelimiterSet __outputDelimiters = new DelimiterSet((char) 44, (char) 10, (char) 0, (char) 0, false);[0m
+[0m[[31merror[0m] [0m/home/cloudera/classes/hadoop-training-projects/sqoop/altered_nyse_dividends.java:261: cannot find symbol[0m
+[0m[[31merror[0m] [0m  symbol:   class DelimiterSet[0m
+[0m[[31merror[0m] [0m  location: class altered_nyse_dividends[0m
+[0m[[31merror[0m] [0m  public String toString(DelimiterSet delimiters) {[0m
+[0m[[31merror[0m] [0m/home/cloudera/classes/hadoop-training-projects/sqoop/altered_nyse_dividends.java:267: cannot find symbol[0m
+[0m[[31merror[0m] [0m  symbol:   class DelimiterSet[0m
+[0m[[31merror[0m] [0m  location: class altered_nyse_dividends[0m
+[0m[[31merror[0m] [0m  public String toString(DelimiterSet delimiters, boolean useRecordDelim) {[0m
+[0m[[31merror[0m] [0m/home/cloudera/classes/hadoop-training-projects/sqoop/altered_nyse_dividends.java:282: cannot find symbol[0m
+[0m[[31merror[0m] [0m  symbol:   class DelimiterSet[0m
+[0m[[31merror[0m] [0m  location: class altered_nyse_dividends[0m
+[0m[[31merror[0m] [0m  public void toString0(DelimiterSet delimiters, StringBuilder __sb, char fieldDelim) {[0m
+[0m[[31merror[0m] [0m/home/cloudera/classes/hadoop-training-projects/sqoop/altered_nyse_dividends.java:291: cannot find symbol[0m
+[0m[[31merror[0m] [0m  symbol:   class DelimiterSet[0m
+[0m[[31merror[0m] [0m  location: class altered_nyse_dividends[0m
+[0m[[31merror[0m] [0m  private static final DelimiterSet __inputDelimiters = new DelimiterSet((char) 44, (char) 10, (char) 0, (char) 0, false);[0m
+[0m[[31merror[0m] [0m/home/cloudera/classes/hadoop-training-projects/sqoop/altered_nyse_dividends.java:292: cannot find symbol[0m
+[0m[[31merror[0m] [0m  symbol:   class RecordParser[0m
+[0m[[31merror[0m] [0m  location: class altered_nyse_dividends[0m
+[0m[[31merror[0m] [0m  private RecordParser __parser;[0m
+[0m[[31merror[0m] [0m/home/cloudera/classes/hadoop-training-projects/sqoop/altered_nyse_dividends.java:293: cannot find symbol[0m
+[0m[[31merror[0m] [0m  symbol:   class Text[0m
+[0m[[31merror[0m] [0m  location: class altered_nyse_dividends[0m
+[0m[[31merror[0m] [0m  public void parse(Text __record) throws RecordParser.ParseError {[0m
+[0m[[31merror[0m] [0m/home/cloudera/classes/hadoop-training-projects/sqoop/altered_nyse_dividends.java:293: package RecordParser does not exist[0m
+[0m[[31merror[0m] [0m  public void parse(Text __record) throws RecordParser.ParseError {[0m
+[0m[[31merror[0m] [0m/home/cloudera/classes/hadoop-training-projects/sqoop/altered_nyse_dividends.java:301: package RecordParser does not exist[0m
+[0m[[31merror[0m] [0m  public void parse(CharSequence __record) throws RecordParser.ParseError {[0m
+[0m[[31merror[0m] [0m/home/cloudera/classes/hadoop-training-projects/sqoop/altered_nyse_dividends.java:309: package RecordParser does not exist[0m
+[0m[[31merror[0m] [0m  public void parse(byte [] __record) throws RecordParser.ParseError {[0m
+[0m[[31merror[0m] [0m/home/cloudera/classes/hadoop-training-projects/sqoop/altered_nyse_dividends.java:317: package RecordParser does not exist[0m
+[0m[[31merror[0m] [0m  public void parse(char [] __record) throws RecordParser.ParseError {[0m
+[0m[[31merror[0m] [0m/home/cloudera/classes/hadoop-training-projects/sqoop/altered_nyse_dividends.java:325: package RecordParser does not exist[0m
+[0m[[31merror[0m] [0m  public void parse(ByteBuffer __record) throws RecordParser.ParseError {[0m
+[0m[[31merror[0m] [0m/home/cloudera/classes/hadoop-training-projects/sqoop/altered_nyse_dividends.java:333: package RecordParser does not exist[0m
+[0m[[31merror[0m] [0m  public void parse(CharBuffer __record) throws RecordParser.ParseError {[0m
+[0m[[31merror[0m] [0m/home/cloudera/classes/hadoop-training-projects/sqoop/nyse_dividends.java:7: package org.apache.hadoop.io does not exist[0m
+[0m[[31merror[0m] [0mimport org.apache.hadoop.io.BytesWritable;[0m
+[0m[[31merror[0m] [0m/home/cloudera/classes/hadoop-training-projects/sqoop/nyse_dividends.java:8: package org.apache.hadoop.io does not exist[0m
+[0m[[31merror[0m] [0mimport org.apache.hadoop.io.Text;[0m
+[0m[[31merror[0m] [0m/home/cloudera/classes/hadoop-training-projects/sqoop/nyse_dividends.java:9: package org.apache.hadoop.io does not exist[0m
+[0m[[31merror[0m] [0mimport org.apache.hadoop.io.Writable;[0m
+[0m[[31merror[0m] [0m/home/cloudera/classes/hadoop-training-projects/sqoop/nyse_dividends.java:10: package org.apache.hadoop.mapred.lib.db does not exist[0m
+[0m[[31merror[0m] [0mimport org.apache.hadoop.mapred.lib.db.DBWritable;[0m
+[0m[[31merror[0m] [0m/home/cloudera/classes/hadoop-training-projects/sqoop/nyse_dividends.java:11: package com.cloudera.sqoop.lib does not exist[0m
+[0m[[31merror[0m] [0mimport com.cloudera.sqoop.lib.JdbcWritableBridge;[0m
+[0m[[31merror[0m] [0m/home/cloudera/classes/hadoop-training-projects/sqoop/nyse_dividends.java:12: package com.cloudera.sqoop.lib does not exist[0m
+[0m[[31merror[0m] [0mimport com.cloudera.sqoop.lib.DelimiterSet;[0m
+[0m[[31merror[0m] [0m/home/cloudera/classes/hadoop-training-projects/sqoop/nyse_dividends.java:13: package com.cloudera.sqoop.lib does not exist[0m
+[0m[[31merror[0m] [0mimport com.cloudera.sqoop.lib.FieldFormatter;[0m
+[0m[[31merror[0m] [0m/home/cloudera/classes/hadoop-training-projects/sqoop/nyse_dividends.java:14: package com.cloudera.sqoop.lib does not exist[0m
+[0m[[31merror[0m] [0mimport com.cloudera.sqoop.lib.RecordParser;[0m
+[0m[[31merror[0m] [0m/home/cloudera/classes/hadoop-training-projects/sqoop/nyse_dividends.java:15: package com.cloudera.sqoop.lib does not exist[0m
+[0m[[31merror[0m] [0mimport com.cloudera.sqoop.lib.BooleanParser;[0m
+[0m[[31merror[0m] [0m/home/cloudera/classes/hadoop-training-projects/sqoop/nyse_dividends.java:16: package com.cloudera.sqoop.lib does not exist[0m
+[0m[[31merror[0m] [0mimport com.cloudera.sqoop.lib.BlobRef;[0m
+[0m[[31merror[0m] [0m/home/cloudera/classes/hadoop-training-projects/sqoop/nyse_dividends.java:17: package com.cloudera.sqoop.lib does not exist[0m
+[0m[[31merror[0m] [0mimport com.cloudera.sqoop.lib.ClobRef;[0m
+[0m[[31merror[0m] [0m/home/cloudera/classes/hadoop-training-projects/sqoop/nyse_dividends.java:18: package com.cloudera.sqoop.lib does not exist[0m
+[0m[[31merror[0m] [0mimport com.cloudera.sqoop.lib.LargeObjectLoader;[0m
+[0m[[31merror[0m] [0m/home/cloudera/classes/hadoop-training-projects/sqoop/nyse_dividends.java:19: package com.cloudera.sqoop.lib does not exist[0m
+[0m[[31merror[0m] [0mimport com.cloudera.sqoop.lib.SqoopRecord;[0m
+[0m[[31merror[0m] [0m/home/cloudera/classes/hadoop-training-projects/sqoop/nyse_dividends.java:37: cannot find symbol[0m
+[0m[[31merror[0m] [0m  symbol: class SqoopRecord[0m
+[0m[[31merror[0m] [0mpublic class nyse_dividends extends SqoopRecord  implements DBWritable, Writable {[0m
+[0m[[31merror[0m] [0m/home/cloudera/classes/hadoop-training-projects/sqoop/nyse_dividends.java:37: cannot find symbol[0m
+[0m[[31merror[0m] [0m  symbol: class DBWritable[0m
+[0m[[31merror[0m] [0mpublic class nyse_dividends extends SqoopRecord  implements DBWritable, Writable {[0m
+[0m[[31merror[0m] [0m/home/cloudera/classes/hadoop-training-projects/sqoop/nyse_dividends.java:37: cannot find symbol[0m
+[0m[[31merror[0m] [0m  symbol: class Writable[0m
+[0m[[31merror[0m] [0mpublic class nyse_dividends extends SqoopRecord  implements DBWritable, Writable {[0m
+[0m[[31merror[0m] [0m/home/cloudera/classes/hadoop-training-projects/sqoop/nyse_dividends.java:158: cannot find symbol[0m
+[0m[[31merror[0m] [0m  symbol:   class LargeObjectLoader[0m
+[0m[[31merror[0m] [0m  location: class nyse_dividends[0m
+[0m[[31merror[0m] [0m  public void loadLargeObjects(LargeObjectLoader __loader)[0m
+[0m[[31merror[0m] [0m/home/cloudera/classes/hadoop-training-projects/sqoop/nyse_dividends.java:161: cannot find symbol[0m
+[0m[[31merror[0m] [0m  symbol:   class LargeObjectLoader[0m
+[0m[[31merror[0m] [0m  location: class nyse_dividends[0m
+[0m[[31merror[0m] [0m  public void loadLargeObjects0(LargeObjectLoader __loader)[0m
+[0m[[31merror[0m] [0m/home/cloudera/classes/hadoop-training-projects/sqoop/nyse_dividends.java:257: cannot find symbol[0m
+[0m[[31merror[0m] [0m  symbol:   class DelimiterSet[0m
+[0m[[31merror[0m] [0m  location: class nyse_dividends[0m
+[0m[[31merror[0m] [0m  private static final DelimiterSet __outputDelimiters = new DelimiterSet((char) 44, (char) 10, (char) 0, (char) 0, false);[0m
+[0m[[31merror[0m] [0m/home/cloudera/classes/hadoop-training-projects/sqoop/nyse_dividends.java:261: cannot find symbol[0m
+[0m[[31merror[0m] [0m  symbol:   class DelimiterSet[0m
+[0m[[31merror[0m] [0m  location: class nyse_dividends[0m
+[0m[[31merror[0m] [0m  public String toString(DelimiterSet delimiters) {[0m
+[0m[[31merror[0m] [0m/home/cloudera/classes/hadoop-training-projects/sqoop/nyse_dividends.java:267: cannot find symbol[0m
+[0m[[31merror[0m] [0m  symbol:   class DelimiterSet[0m
+[0m[[31merror[0m] [0m  location: class nyse_dividends[0m
+[0m[[31merror[0m] [0m  public String toString(DelimiterSet delimiters, boolean useRecordDelim) {[0m
+[0m[[31merror[0m] [0m/home/cloudera/classes/hadoop-training-projects/sqoop/nyse_dividends.java:282: cannot find symbol[0m
+[0m[[31merror[0m] [0m  symbol:   class DelimiterSet[0m
+[0m[[31merror[0m] [0m  location: class nyse_dividends[0m
+[0m[[31merror[0m] [0m  public void toString0(DelimiterSet delimiters, StringBuilder __sb, char fieldDelim) {[0m
+[0m[[31merror[0m] [0m/home/cloudera/classes/hadoop-training-projects/sqoop/nyse_dividends.java:291: cannot find symbol[0m
+[0m[[31merror[0m] [0m  symbol:   class DelimiterSet[0m
+[0m[[31merror[0m] [0m  location: class nyse_dividends[0m
+[0m[[31merror[0m] [0m  private static final DelimiterSet __inputDelimiters = new DelimiterSet((char) 44, (char) 10, (char) 0, (char) 0, false);[0m
+[0m[[31merror[0m] [0m/home/cloudera/classes/hadoop-training-projects/sqoop/nyse_dividends.java:292: cannot find symbol[0m
+[0m[[31merror[0m] [0m  symbol:   class RecordParser[0m
+[0m[[31merror[0m] [0m  location: class nyse_dividends[0m
+[0m[[31merror[0m] [0m  private RecordParser __parser;[0m
+[0m[[31merror[0m] [0m/home/cloudera/classes/hadoop-training-projects/sqoop/nyse_dividends.java:293: cannot find symbol[0m
+[0m[[31merror[0m] [0m  symbol:   class Text[0m
+[0m[[31merror[0m] [0m  location: class nyse_dividends[0m
+[0m[[31merror[0m] [0m  public void parse(Text __record) throws RecordParser.ParseError {[0m
+[0m[[31merror[0m] [0m/home/cloudera/classes/hadoop-training-projects/sqoop/nyse_dividends.java:293: package RecordParser does not exist[0m
+[0m[[31merror[0m] [0m  public void parse(Text __record) throws RecordParser.ParseError {[0m
+[0m[[31merror[0m] [0m/home/cloudera/classes/hadoop-training-projects/sqoop/nyse_dividends.java:301: package RecordParser does not exist[0m
+[0m[[31merror[0m] [0m  public void parse(CharSequence __record) throws RecordParser.ParseError {[0m
+[0m[[31merror[0m] [0m/home/cloudera/classes/hadoop-training-projects/sqoop/nyse_dividends.java:309: package RecordParser does not exist[0m
+[0m[[31merror[0m] [0m  public void parse(byte [] __record) throws RecordParser.ParseError {[0m
+[0m[[31merror[0m] [0m/home/cloudera/classes/hadoop-training-projects/sqoop/nyse_dividends.java:317: package RecordParser does not exist[0m
+[0m[[31merror[0m] [0m  public void parse(char [] __record) throws RecordParser.ParseError {[0m
+[0m[[31merror[0m] [0m/home/cloudera/classes/hadoop-training-projects/sqoop/nyse_dividends.java:325: package RecordParser does not exist[0m
+[0m[[31merror[0m] [0m  public void parse(ByteBuffer __record) throws RecordParser.ParseError {[0m
+[0m[[31merror[0m] [0m/home/cloudera/classes/hadoop-training-projects/sqoop/nyse_dividends.java:333: package RecordParser does not exist[0m
+[0m[[31merror[0m] [0m  public void parse(CharBuffer __record) throws RecordParser.ParseError {[0m
+[0m[[31merror[0m] [0m/home/cloudera/classes/hadoop-training-projects/sqoop/altered_nyse_dividends.java:116: bad operand types for binary operator '=='[0m
+[0m[[31merror[0m] [0m  first type:  altered_nyse_dividends[0m
+[0m[[31merror[0m] [0m  second type: java.lang.Object[0m
+[0m[[31merror[0m] [0m    if (this == o) {[0m
+[0m[[31merror[0m] [0m/home/cloudera/classes/hadoop-training-projects/sqoop/altered_nyse_dividends.java:119: inconvertible types[0m
+[0m[[31merror[0m] [0m  required: altered_nyse_dividends[0m
+[0m[[31merror[0m] [0m  found:    java.lang.Object[0m
+[0m[[31merror[0m] [0m    if (!(o instanceof altered_nyse_dividends)) {[0m
+[0m[[31merror[0m] [0m/home/cloudera/classes/hadoop-training-projects/sqoop/altered_nyse_dividends.java:122: inconvertible types[0m
+[0m[[31merror[0m] [0m  required: altered_nyse_dividends[0m
+[0m[[31merror[0m] [0m  found:    java.lang.Object[0m
+[0m[[31merror[0m] [0m    altered_nyse_dividends that = (altered_nyse_dividends) o;[0m
+[0m[[31merror[0m] [0m/home/cloudera/classes/hadoop-training-projects/sqoop/altered_nyse_dividends.java:131: bad operand types for binary operator '=='[0m
+[0m[[31merror[0m] [0m  first type:  altered_nyse_dividends[0m
+[0m[[31merror[0m] [0m  second type: java.lang.Object[0m
+[0m[[31merror[0m] [0m    if (this == o) {[0m
+[0m[[31merror[0m] [0m/home/cloudera/classes/hadoop-training-projects/sqoop/altered_nyse_dividends.java:134: inconvertible types[0m
+[0m[[31merror[0m] [0m  required: altered_nyse_dividends[0m
+[0m[[31merror[0m] [0m  found:    java.lang.Object[0m
+[0m[[31merror[0m] [0m    if (!(o instanceof altered_nyse_dividends)) {[0m
+[0m[[31merror[0m] [0m/home/cloudera/classes/hadoop-training-projects/sqoop/altered_nyse_dividends.java:137: inconvertible types[0m
+[0m[[31merror[0m] [0m  required: altered_nyse_dividends[0m
+[0m[[31merror[0m] [0m  found:    java.lang.Object[0m
+[0m[[31merror[0m] [0m    altered_nyse_dividends that = (altered_nyse_dividends) o;[0m
+[0m[[31merror[0m] [0m/home/cloudera/classes/hadoop-training-projects/sqoop/altered_nyse_dividends.java:147: cannot find symbol[0m
+[0m[[31merror[0m] [0m  symbol:   variable JdbcWritableBridge[0m
+[0m[[31merror[0m] [0m  location: class altered_nyse_dividends[0m
+[0m[[31merror[0m] [0m    this.stock_symbol = JdbcWritableBridge.readString(1, __dbResults);[0m
+[0m[[31merror[0m] [0m/home/cloudera/classes/hadoop-training-projects/sqoop/altered_nyse_dividends.java:148: cannot find symbol[0m
+[0m[[31merror[0m] [0m  symbol:   variable JdbcWritableBridge[0m
+[0m[[31merror[0m] [0m  location: class altered_nyse_dividends[0m
+[0m[[31merror[0m] [0m    this.value = JdbcWritableBridge.readFloat(2, __dbResults);[0m
+[0m[[31merror[0m] [0m/home/cloudera/classes/hadoop-training-projects/sqoop/altered_nyse_dividends.java:149: cannot find symbol[0m
+[0m[[31merror[0m] [0m  symbol:   variable JdbcWritableBridge[0m
+[0m[[31merror[0m] [0m  location: class altered_nyse_dividends[0m
+[0m[[31merror[0m] [0m    this.datestring = JdbcWritableBridge.readString(3, __dbResults);[0m
+[0m[[31merror[0m] [0m/home/cloudera/classes/hadoop-training-projects/sqoop/altered_nyse_dividends.java:150: cannot find symbol[0m
+[0m[[31merror[0m] [0m  symbol:   variable JdbcWritableBridge[0m
+[0m[[31merror[0m] [0m  location: class altered_nyse_dividends[0m
+[0m[[31merror[0m] [0m    this.exchange = JdbcWritableBridge.readString(4, __dbResults);[0m
+[0m[[31merror[0m] [0m/home/cloudera/classes/hadoop-training-projects/sqoop/altered_nyse_dividends.java:153: cannot find symbol[0m
+[0m[[31merror[0m] [0m  symbol:   variable JdbcWritableBridge[0m
+[0m[[31merror[0m] [0m  location: class altered_nyse_dividends[0m
+[0m[[31merror[0m] [0m    this.stock_symbol = JdbcWritableBridge.readString(1, __dbResults);[0m
+[0m[[31merror[0m] [0m/home/cloudera/classes/hadoop-training-projects/sqoop/altered_nyse_dividends.java:154: cannot find symbol[0m
+[0m[[31merror[0m] [0m  symbol:   variable JdbcWritableBridge[0m
+[0m[[31merror[0m] [0m  location: class altered_nyse_dividends[0m
+[0m[[31merror[0m] [0m    this.value = JdbcWritableBridge.readFloat(2, __dbResults);[0m
+[0m[[31merror[0m] [0m/home/cloudera/classes/hadoop-training-projects/sqoop/altered_nyse_dividends.java:155: cannot find symbol[0m
+[0m[[31merror[0m] [0m  symbol:   variable JdbcWritableBridge[0m
+[0m[[31merror[0m] [0m  location: class altered_nyse_dividends[0m
+[0m[[31merror[0m] [0m    this.datestring = JdbcWritableBridge.readString(3, __dbResults);[0m
+[0m[[31merror[0m] [0m/home/cloudera/classes/hadoop-training-projects/sqoop/altered_nyse_dividends.java:156: cannot find symbol[0m
+[0m[[31merror[0m] [0m  symbol:   variable JdbcWritableBridge[0m
+[0m[[31merror[0m] [0m  location: class altered_nyse_dividends[0m
+[0m[[31merror[0m] [0m    this.exchange = JdbcWritableBridge.readString(4, __dbResults);[0m
+[0m[[31merror[0m] [0m/home/cloudera/classes/hadoop-training-projects/sqoop/altered_nyse_dividends.java:169: cannot find symbol[0m
+[0m[[31merror[0m] [0m  symbol:   variable JdbcWritableBridge[0m
+[0m[[31merror[0m] [0m  location: class altered_nyse_dividends[0m
+[0m[[31merror[0m] [0m    JdbcWritableBridge.writeString(stock_symbol, 1 + __off, 12, __dbStmt);[0m
+[0m[[31merror[0m] [0m/home/cloudera/classes/hadoop-training-projects/sqoop/altered_nyse_dividends.java:170: cannot find symbol[0m
+[0m[[31merror[0m] [0m  symbol:   variable JdbcWritableBridge[0m
+[0m[[31merror[0m] [0m  location: class altered_nyse_dividends[0m
+[0m[[31merror[0m] [0m    JdbcWritableBridge.writeFloat(value, 2 + __off, 7, __dbStmt);[0m
+[0m[[31merror[0m] [0m/home/cloudera/classes/hadoop-training-projects/sqoop/altered_nyse_dividends.java:171: cannot find symbol[0m
+[0m[[31merror[0m] [0m  symbol:   variable JdbcWritableBridge[0m
+[0m[[31merror[0m] [0m  location: class altered_nyse_dividends[0m
+[0m[[31merror[0m] [0m    JdbcWritableBridge.writeString(datestring, 3 + __off, 12, __dbStmt);[0m
+[0m[[31merror[0m] [0m/home/cloudera/classes/hadoop-training-projects/sqoop/altered_nyse_dividends.java:172: cannot find symbol[0m
+[0m[[31merror[0m] [0m  symbol:   variable JdbcWritableBridge[0m
+[0m[[31merror[0m] [0m  location: class altered_nyse_dividends[0m
+[0m[[31merror[0m] [0m    JdbcWritableBridge.writeString(exchange, 4 + __off, 12, __dbStmt);[0m
+[0m[[31merror[0m] [0m/home/cloudera/classes/hadoop-training-projects/sqoop/altered_nyse_dividends.java:176: cannot find symbol[0m
+[0m[[31merror[0m] [0m  symbol:   variable JdbcWritableBridge[0m
+[0m[[31merror[0m] [0m  location: class altered_nyse_dividends[0m
+[0m[[31merror[0m] [0m    JdbcWritableBridge.writeString(stock_symbol, 1 + __off, 12, __dbStmt);[0m
+[0m[[31merror[0m] [0m/home/cloudera/classes/hadoop-training-projects/sqoop/altered_nyse_dividends.java:177: cannot find symbol[0m
+[0m[[31merror[0m] [0m  symbol:   variable JdbcWritableBridge[0m
+[0m[[31merror[0m] [0m  location: class altered_nyse_dividends[0m
+[0m[[31merror[0m] [0m    JdbcWritableBridge.writeFloat(value, 2 + __off, 7, __dbStmt);[0m
+[0m[[31merror[0m] [0m/home/cloudera/classes/hadoop-training-projects/sqoop/altered_nyse_dividends.java:178: cannot find symbol[0m
+[0m[[31merror[0m] [0m  symbol:   variable JdbcWritableBridge[0m
+[0m[[31merror[0m] [0m  location: class altered_nyse_dividends[0m
+[0m[[31merror[0m] [0m    JdbcWritableBridge.writeString(datestring, 3 + __off, 12, __dbStmt);[0m
+[0m[[31merror[0m] [0m/home/cloudera/classes/hadoop-training-projects/sqoop/altered_nyse_dividends.java:179: cannot find symbol[0m
+[0m[[31merror[0m] [0m  symbol:   variable JdbcWritableBridge[0m
+[0m[[31merror[0m] [0m  location: class altered_nyse_dividends[0m
+[0m[[31merror[0m] [0m    JdbcWritableBridge.writeString(exchange, 4 + __off, 12, __dbStmt);[0m
+[0m[[31merror[0m] [0m/home/cloudera/classes/hadoop-training-projects/sqoop/altered_nyse_dividends.java:187: cannot find symbol[0m
+[0m[[31merror[0m] [0m  symbol:   variable Text[0m
+[0m[[31merror[0m] [0m  location: class altered_nyse_dividends[0m
+[0m[[31merror[0m] [0m    this.stock_symbol = Text.readString(__dataIn);[0m
+[0m[[31merror[0m] [0m/home/cloudera/classes/hadoop-training-projects/sqoop/altered_nyse_dividends.java:197: cannot find symbol[0m
+[0m[[31merror[0m] [0m  symbol:   variable Text[0m
+[0m[[31merror[0m] [0m  location: class altered_nyse_dividends[0m
+[0m[[31merror[0m] [0m    this.datestring = Text.readString(__dataIn);[0m
+[0m[[31merror[0m] [0m/home/cloudera/classes/hadoop-training-projects/sqoop/altered_nyse_dividends.java:202: cannot find symbol[0m
+[0m[[31merror[0m] [0m  symbol:   variable Text[0m
+[0m[[31merror[0m] [0m  location: class altered_nyse_dividends[0m
+[0m[[31merror[0m] [0m    this.exchange = Text.readString(__dataIn);[0m
+[0m[[31merror[0m] [0m/home/cloudera/classes/hadoop-training-projects/sqoop/altered_nyse_dividends.java:210: cannot find symbol[0m
+[0m[[31merror[0m] [0m  symbol:   variable Text[0m
+[0m[[31merror[0m] [0m  location: class altered_nyse_dividends[0m
+[0m[[31merror[0m] [0m    Text.writeString(__dataOut, stock_symbol);[0m
+[0m[[31merror[0m] [0m/home/cloudera/classes/hadoop-training-projects/sqoop/altered_nyse_dividends.java:222: cannot find symbol[0m
+[0m[[31merror[0m] [0m  symbol:   variable Text[0m
+[0m[[31merror[0m] [0m  location: class altered_nyse_dividends[0m
+[0m[[31merror[0m] [0m    Text.writeString(__dataOut, datestring);[0m
+[0m[[31merror[0m] [0m/home/cloudera/classes/hadoop-training-projects/sqoop/altered_nyse_dividends.java:228: cannot find symbol[0m
+[0m[[31merror[0m] [0m  symbol:   variable Text[0m
+[0m[[31merror[0m] [0m  location: class altered_nyse_dividends[0m
+[0m[[31merror[0m] [0m    Text.writeString(__dataOut, exchange);[0m
+[0m[[31merror[0m] [0m/home/cloudera/classes/hadoop-training-projects/sqoop/altered_nyse_dividends.java:236: cannot find symbol[0m
+[0m[[31merror[0m] [0m  symbol:   variable Text[0m
+[0m[[31merror[0m] [0m  location: class altered_nyse_dividends[0m
+[0m[[31merror[0m] [0m    Text.writeString(__dataOut, stock_symbol);[0m
+[0m[[31merror[0m] [0m/home/cloudera/classes/hadoop-training-projects/sqoop/altered_nyse_dividends.java:248: cannot find symbol[0m
+[0m[[31merror[0m] [0m  symbol:   variable Text[0m
+[0m[[31merror[0m] [0m  location: class altered_nyse_dividends[0m
+[0m[[31merror[0m] [0m    Text.writeString(__dataOut, datestring);[0m
+[0m[[31merror[0m] [0m/home/cloudera/classes/hadoop-training-projects/sqoop/altered_nyse_dividends.java:254: cannot find symbol[0m
+[0m[[31merror[0m] [0m  symbol:   variable Text[0m
+[0m[[31merror[0m] [0m  location: class altered_nyse_dividends[0m
+[0m[[31merror[0m] [0m    Text.writeString(__dataOut, exchange);[0m
+[0m[[31merror[0m] [0m/home/cloudera/classes/hadoop-training-projects/sqoop/altered_nyse_dividends.java:257: cannot find symbol[0m
+[0m[[31merror[0m] [0m  symbol:   class DelimiterSet[0m
+[0m[[31merror[0m] [0m  location: class altered_nyse_dividends[0m
+[0m[[31merror[0m] [0m  private static final DelimiterSet __outputDelimiters = new DelimiterSet((char) 44, (char) 10, (char) 0, (char) 0, false);[0m
+[0m[[31merror[0m] [0m/home/cloudera/classes/hadoop-training-projects/sqoop/altered_nyse_dividends.java:270: cannot find symbol[0m
+[0m[[31merror[0m] [0m  symbol:   variable FieldFormatter[0m
+[0m[[31merror[0m] [0m  location: class altered_nyse_dividends[0m
+[0m[[31merror[0m] [0m    __sb.append(FieldFormatter.escapeAndEnclose(stock_symbol==null?"null":stock_symbol, delimiters));[0m
+[0m[[31merror[0m] [0m/home/cloudera/classes/hadoop-training-projects/sqoop/altered_nyse_dividends.java:272: cannot find symbol[0m
+[0m[[31merror[0m] [0m  symbol:   variable FieldFormatter[0m
+[0m[[31merror[0m] [0m  location: class altered_nyse_dividends[0m
+[0m[[31merror[0m] [0m    __sb.append(FieldFormatter.escapeAndEnclose(value==null?"null":"" + value, delimiters));[0m
+[0m[[31merror[0m] [0m/home/cloudera/classes/hadoop-training-projects/sqoop/altered_nyse_dividends.java:274: cannot find symbol[0m
+[0m[[31merror[0m] [0m  symbol:   variable FieldFormatter[0m
+[0m[[31merror[0m] [0m  location: class altered_nyse_dividends[0m
+[0m[[31merror[0m] [0m    __sb.append(FieldFormatter.escapeAndEnclose(datestring==null?"null":datestring, delimiters));[0m
+[0m[[31merror[0m] [0m/home/cloudera/classes/hadoop-training-projects/sqoop/altered_nyse_dividends.java:276: cannot find symbol[0m
+[0m[[31merror[0m] [0m  symbol:   variable FieldFormatter[0m
+[0m[[31merror[0m] [0m  location: class altered_nyse_dividends[0m
+[0m[[31merror[0m] [0m    __sb.append(FieldFormatter.escapeAndEnclose(exchange==null?"null":exchange, delimiters));[0m
+[0m[[31merror[0m] [0m/home/cloudera/classes/hadoop-training-projects/sqoop/altered_nyse_dividends.java:283: cannot find symbol[0m
+[0m[[31merror[0m] [0m  symbol:   variable FieldFormatter[0m
+[0m[[31merror[0m] [0m  location: class altered_nyse_dividends[0m
+[0m[[31merror[0m] [0m    __sb.append(FieldFormatter.escapeAndEnclose(stock_symbol==null?"null":stock_symbol, delimiters));[0m
+[0m[[31merror[0m] [0m/home/cloudera/classes/hadoop-training-projects/sqoop/altered_nyse_dividends.java:285: cannot find symbol[0m
+[0m[[31merror[0m] [0m  symbol:   variable FieldFormatter[0m
+[0m[[31merror[0m] [0m  location: class altered_nyse_dividends[0m
+[0m[[31merror[0m] [0m    __sb.append(FieldFormatter.escapeAndEnclose(value==null?"null":"" + value, delimiters));[0m
+[0m[[31merror[0m] [0m(compile:[31mcompileIncremental[0m) javac returned nonzero exit code[0m

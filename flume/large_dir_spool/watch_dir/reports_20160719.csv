@@ -1,0 +1,3 @@
+symbol,end_date,amend,period_focus,fiscal_year,doc_type,revenues,op_income,net_income,eps_basic,eps_diluted,dividend,assets,cur_assets,cur_liab,cash,equity,cash_flow_op,cash_flow_inv,cash_flow_fin
+DIT,2016-06-30,False,Q3,2016,10-Q,333398723.0,3315180.0,1803292.0,3.03,2.62,0.18,114697352.0,91869697.0,28992452.0,414997.0,62167777.0,13392060.0,-901831.0,-12294768.0
+CALM,2016-05-28,False,FY,2016,10-K,1908650000.0,470314000.0,316041000.0,6.56,6.53,0.0,1111765000.0,626283000.0,83451000.0,29046000.0,917361000.0,381838000.0,-212549000.0,-148910000.0

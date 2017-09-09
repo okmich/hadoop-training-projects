@@ -1,0 +1,3 @@
+symbol,end_date,amend,period_focus,fiscal_year,doc_type,revenues,op_income,net_income,eps_basic,eps_diluted,dividend,assets,cur_assets,cur_liab,cash,equity,cash_flow_op,cash_flow_inv,cash_flow_fin
+CCF,2016-02-29,False,Q2,2016,10-Q,53706000.0,9594000.0,6907000.0,0.75,0.74,0.0,249800000.0,118101000.0,28375000.0,51708000.0,159449000.0,19643000.0,587000.0,-10204000.0
+ATU,2016-02-29,False,Q2,2016,10-Q,263289000.0,-172115000.0,-159190000.0,-2.7,-2.7,0.0,1411004000.0,538283000.0,221610000.0,154671000.0,487532000.0,28863000.0,-21394000.0,-11025000.0
