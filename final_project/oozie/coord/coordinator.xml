@@ -12,8 +12,8 @@
                     <value>${jobTracker}</value>
                 </property>
                 <property>
-                    <name>namenode</name>
-                    <value>${namenode}</value>
+                    <name>nameNode</name>
+                    <value>${nameNode}</value>
                 </property>
                 <property>
                     <name>app_scripts</name>
@@ -29,19 +29,19 @@
                 </property>
                 <property>
                     <name>iyear</name>
-                    <value>${YEAR}</value>
+                    <value>2017</value>
                 </property>
                 <property>
                     <name>imonth</name>
-                    <value>${MONTH}</value>
+                    <value>09</value>
                 </property>
                 <property>
                     <name>iday</name>
-                    <value>${DAY}</value>
+                    <value>10</value>
                 </property>
                 <property>
                     <name>ihour</name>
-                    <value>${coord:current(-1)}</value>
+                    <value>09</value>
                 </property>
             </configuration>
         </workflow>

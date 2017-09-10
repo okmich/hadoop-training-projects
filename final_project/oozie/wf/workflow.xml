@@ -3,7 +3,7 @@
 	 <action name="PigActionProcess">
         <pig>
             <job-tracker>${jobTracker}</job-tracker>
-            <name-node>${namenode}</name-node>
+            <name-node>${nameNode}</name-node>
             <script>${app_scripts}/twitter_job.pig</script>
             <param>year=${iyear}</param>
             <param>month=${imonth}</param>
@@ -11,26 +11,46 @@
             <param>hour=${ihour}</param>
             <param>techJobTweetHDFSPath=${techJobTweetHDFSPath}</param>
             <param>libpath=${app_lib}</param>
-            <argument>-useHCatalog</argument>
         </pig>
-        <ok to="deleteSourceFile"/>
+        <ok to="hivePartitionUpdate"/>
+        <error to="errorOccured"/>
+    </action>
+    <action name="hivePartitionUpdate">
+        <hive2 xmlns="uri:oozie:hive2-action:0.1">
+            <job-tracker>${jobTracker}</job-tracker>
+            <name-node>${nameNode}</name-node>
+            <jdbc-url>jdbc:mysql://quickstart.cloudera:3306/final_project</jdbc-url>
+            <script>${app_scripts}/update_partition_script_v2.hql</script>
+            <argument>year=${iyear}</argument>
+            <argument>month=${imonth}</argument>
+            <argument>day=${iday}</argument>
+            <argument>hour=${ihour}</argument>
+            <argument>--password-file=/user/cloudera/passwordfile</argument>
+        </hive2>
+        <ok to="sqoopToMysql"/>
         <error to="errorOccured"/>
     </action>
     <action name="sqoopToMysql">
          <sqoop xmlns="uri:oozie:sqoop-action:0.2">
             <job-tracker>${jobTracker}</job-tracker>
-            <name-node>${namenode}</name-node>
+            <name-node>${nameNode}</name-node>
             <arg>export</arg>
             <arg>--connect</arg>
-            <arg>jdbc:mysql://quickstart:3306/handson_class_project</arg>
+            <arg>jdbc:mysql://quickstart:3306/final_project</arg>
             <arg>--username</arg>
             <arg>cloudera</arg>
             <arg>--table</arg>
             <arg>twitter_job</arg>
-            <arg>--export-dir</arg>
-            <arg>/user/cloudera/output/handson_train/hive/twitterjobs</arg>
+            <arg>--hcatalog-database</arg>
+            <arg>twitterdb</arg>
+            <arg>--hcatalog-table</arg>
+            <arg>twitter_job</arg>
+            <arg>--hcatalog-partition-keys</arg>
+            <arg>year,month,day,hour</arg>
+            <arg>--hcatalog-partition-values</arg>
+            <arg>2017,09,10,07</arg>
             <arg>--passwordfile</arg>
-            <arg>/user/cloudera/sqoop-passworfile</arg>
+            <arg>/user/cloudera/passworfile</arg>
         </sqoop>
         <ok to="deleteSourceFile"/>
         <error to="errorOccured"/>

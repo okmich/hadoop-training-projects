@@ -1,14 +1,14 @@
 package com.dezyre.hadooptraining.udf;
 
 import java.io.IOException;
-import java.nio.charset.Charset;
+
+import static java.nio.charset.StandardCharsets.*;
 
 import org.apache.pig.EvalFunc;
 import org.apache.pig.data.Tuple;
 
 public class Utf8StringEncoder extends EvalFunc<String> {
 
-	private static final Charset charset = Charset.forName("UTF8");
 
 	public Utf8StringEncoder() {
 	}
@@ -20,7 +20,11 @@ public class Utf8StringEncoder extends EvalFunc<String> {
 		if (obj == null) {
 			return "";
 		}
-		return charset.decode(charset.encode(obj.toString())).toString();
+		//Thanks to Samir Desai
+		byte[] ptext = obj.toString().getBytes(ISO_8859_1); 
+		String value = new String(ptext, UTF_8);
+		
+		return value;
 	}
 
 }
