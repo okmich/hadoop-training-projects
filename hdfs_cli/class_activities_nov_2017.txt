@@ -1,0 +1,50 @@
+- create a directory
+	hdfs dfs -mkdir ./testa
+	hdfs dfs -mkdir -p ./testa/testb/testc
+
+- list the content of a directory
+	hdfs dfs -ls .
+	hdfs dfs -ls ./testa
+	hdfs dfs -ls -R ./testa
+
+- create an empty file in testc
+	hdfs dfs -touchz ./testa/testb/testc/simple.txt
+
+- rename a directory
+	hdfs dfs -mv ./testa/testb/testc ./testa/testb/testd
+	hdfs dfs -mv ./testa/testb/testc/simple.txt ./testa/simple.txt
+
+
+wget https://raw.githubusercontent.com/okmich/hadoop-training-projects/master/datasets/nyse_dividends/NASDAQ_dividends_A.csv
+
+wget https://raw.githubusercontent.com/okmich/hadoop-training-projects/master/datasets/nyse_dividends/NASDAQ_dividends_C.csv
+
+
+
+- upload data to hdfs directory
+	copy
+	hdfs dfs -copyFromLocal NASDAQ_dividends_A.csv ./testa
+	hdfs dfs -put NASDAQ_dividends_C.csv ./testa
+	move
+	hdfs dfs -moveFromLocal NASDAQ_dividends_A.csv ./testa/testb/testd
+	hdfs dfs -moveFromLocal NASDAQ_dividends_C.csv ./testa/testb
+
+- preview data in hdfs 
+	hdfs dfs -tail ./testa/testb/NASDAQ_dividends_C.scv
+	hdfs dfs -cat ./testa/testb/NASDAQ_dividends_C.scv
+
+- download data from a hdfs directory
+	copy
+	hdfs dfs -copyToLocal ./testa/testb/NASDAQ_dividends_C.csv .
+	hdfs dfs -get ./testa/testb/testd/NASDAQ_dividends_C.csv .
+
+- delete a directory
+	hdfs dfs -rm -R ./testa
+
+- delete a file 
+	hdfs dfs -rm ./testa/simple.txt
+	hdfs dfs -rm -skipTrash ./testa/testb/testd/NASDAQ_dividends_C.csv
+
+- empty trash
+	hdfs dfs -expunge
+	
