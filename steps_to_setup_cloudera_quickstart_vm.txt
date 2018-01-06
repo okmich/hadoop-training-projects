@@ -1,0 +1,17 @@
+Download VirtualBox - https://www.virtualbox.org/wiki/Downloads
+Install the download executable file
+
+Download the VM for cloudera CDH - https://www.cloudera.com/downloads/quickstart_vms/5-12.html
+Download the quickstart vm in a zip file
+
+Unzip the cloudera quickstart vm zip file
+
+Open the VirtualBox application
+
+Open the file menu, click on "Import Appliance"
+Click on the browse button on right side of the dialog box.
+
+Then locate the unzipped OVA or OVF file and select the file to be imported
+
+Click import
+
