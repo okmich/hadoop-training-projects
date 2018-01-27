@@ -9,4 +9,3 @@ mysql -u root -p
 -- in mysql shell, execute the command
 source world.sql
 
-mysql  -u root -h iop-bi-master.imdemocloud.com --password=root

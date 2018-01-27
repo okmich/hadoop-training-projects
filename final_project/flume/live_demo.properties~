@@ -1,0 +1,36 @@
+jobSearch.sources=pSrc
+jobSearch.channels=pChl
+jobSearch.sinks=pSnk
+
+#configure the components
+# twitter source
+jobSearch.sources.pSrc.type=com.cloudera.flume.source.TwitterSource
+jobSearch.sources.pSrc.channels=pChl
+jobSearch.sources.pSrc.consumerKey=roKsOhPka9NwrO9sgmqEYxXkX
+jobSearch.sources.pSrc.consumerSecret=JfF8yr6QqncT54xR80SdKq7W7UAchcYnYgu9FodHVsD92WVZzR
+jobSearch.sources.pSrc.accessToken=1421823854-AQQhXW9qWhsdpOjD0Hnsnov8EcRu0ScFSRnkqgD
+jobSearch.sources.pSrc.accessTokenSecret=9no7EUflJzO1XZhiUBOiHg1wdpVmLDUCOSDyHiIh1yVOO
+jobSearch.sources.pSrc.keywords=hadoop job
+
+
+jobSearch.sources.pSrc.interceptors=t1
+jobSearch.sources.pSrc.interceptors.t1.type=timestamp
+
+# file channel
+jobSearch.channels.pChl.type=file
+jobSearch.channels.pChl.checkpointDir=/home/cloudera/twitter_flume_file_channel/jobSearch/checkpointdir
+jobSearch.channels.pChl.dataDirs=/home/cloudera/twitter_flume_file_channel/jobSearch/datadir
+
+#hdfs sink
+jobSearch.sinks.pSnk.type=hdfs
+jobSearch.sinks.pSnk.channel=pChl
+jobSearch.sinks.pSnk.hdfs.path=/user/cloudera/output/handson_train/flume/javaJobTweet/%Y/%m/%d/%H
+jobSearch.sinks.pSnk.hdfs.fileType=DataStream
+jobSearch.sinks.pSnk.hdfs.writeFormat=Text
+jobSearch.sinks.pSnk.hdfs.rollInterval=3600
+jobSearch.sinks.pSnk.hdfs.rollSize=0
+jobSearch.sinks.pSnk.hdfs.rollCount=100000
+jobSearch.sinks.pSnk.hdfs.filePrefix=job_tweet
+jobSearch.sinks.pSnk.hdfs.fileSuffix=.txt
+
+

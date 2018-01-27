@@ -1,11 +1,11 @@
 --== Project 4 - Processing NYSE trading data using Hive nyse_db
--- In this project we will learn about Apache Hive - another popular processing framework. 
+-- In this project we will learn about Apache Hive - another popular retrieval framework. 
 -- We will be using Hive to process the NYSE trading data on daily price. 
 -- We will see the different file types and formats available 
 -- how to create and load data into Hive tables.
 
 
-
+x1
 -- load data [local] inpath '' into 
 -- insert overwrite table nasdaq_dprice
 -- select * from ext_nasdaq_dprice where exchange_name != 'exchange';
@@ -29,6 +29,6 @@
 
 
 --== Project 6 - Analysis of Forex tick data using Hive
--- Advance concepts like aggregated queries 
+-- Advance concepts like aggregated queries  - Cube, Rollup, grouping set
 -- Cloudera Impala will also be used in this project.
--- performance tuning.
+-- performance tuning. ()

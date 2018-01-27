@@ -1,10 +1,10 @@
 Big data Processing Paradigm vs SQL
 =================================
 Projection			- SELECT 													Map class
-Transformation		- applying a scalar function on a item	upper(), an expr	Map
-Filtering			- applying a predicate  WHERE								Map
+Transformation		- applying a scalar function on a item	upper(), an expr	Map 
+Filtering			- applying a predicate  WHERE								Map / Reduce (like the HAVING clause in SQL)
 Merging/Joining		- Joining	JOIN on											Map/Reduce
-Aggregation			- many-to-one functions e.g sum, max, min, avg, stddev		Reducer
+Aggregation			- many-to-one functions e.g sum, max, min, avg, stddev		Reducer / Combiners
 Ordering/Sorting	- ORDER BY													Shuffling (Partitioner)/Reducer/Comparators (SortComparators, GroupComparators)
 Job Chaining		- Inline view												Multiple MapReduce jobs
 
@@ -14,4 +14,3 @@ Job chaing in sql
 select a, b c from (select ds.f.as as a, 1 as b, 29 as c from (select * from table where true))	stage 1
 select a, b c from (select ds.f.as as a, 1 as b, 29 as c from v)								stage 2
 select a, b c from v2																			stage 3
-

@@ -2,7 +2,7 @@
 select flightnum, year, month, dayofmonth, dayofweek, c.description, f.tailnum, p.aircraft_type,
 	CONCAT(a.airport, ' ', a.city, ', ', a.state, ', ', a.country ) origin, 
 	CONCAT(b.airport, ' ', b.city, ', ', b.state, ', ', b.country ) dest 
-from flight f 
+from flight_pq f 
 	left join carriers c on f.uniquecarrier = c.code
 	left join airports a on f.origin = a.iata
 	left join airports b on f.dest = b.iata
@@ -13,6 +13,10 @@ create view v_airports as select iata, concat(airport, ', ', city, ', ', state, 
 
 -- copy the HiveSwarm jar to a hdfs folder
 add jar hdfs://iop-bi-master.imdemocloud.com:8020/user/okmich20/HiveSwarm-1.0-SNAPSHOT.jar;
+
+add jar hdfs://quickstart.cloudera:8020/user/cloudera/HiveSwarm-1.0-SNAPSHOT.jar;
+
+
 -- create function
 create temporary function gps_distance_from as 'com.livingsocial.hive.udf.gpsDistanceFrom';
 
@@ -24,6 +28,11 @@ select tbl1.iata from_iata, tbl1.address from_airport, tbl2.iata to_iata, tbl2.a
 		full outer join 
 			(select  iata, address, geolong, geolat from v_airports) tbl2
 	where tbl1.iata <> tbl2.iata
+
+
+-- find all airports in their descending order of distance from JFK international airport NY
+select to_iata, to_airport, dist from v_inter_airport_dist where from_iata = 'JFK'
+order by dist desc;
 
 -- find the top 3 airports pairs with the shortest distance between them
 

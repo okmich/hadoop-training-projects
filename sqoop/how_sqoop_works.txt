@@ -1,26 +1,32 @@
-MapReduce
+SQOOP
+==========
+How to run sqoop
+	Entirely commandline driven
+	Some vendor however have built fancy gui over the commandline interface
 
 
-jdbc
-	how does sqoop work
-		import
-			jdbc - 
-				import  - select statements
+How does sqoop work
+	MapReduce
+	jdbc
+		how does sqoop work
+			import
+				jdbc - 
+					import  - select statements
 
-			MapReduce
-				- multiple parallel map task
+				MapReduce
+					- multiple parallel map task
 
-			write files to hdfs
+				write files to hdfs
 
 
-		export
-			read the files from hdfs
+			export
+				read the files from hdfs
 
-			MapReduce
-				- multiple parallel map task
-			
-			jdbc - 
-				export	- insert/update statement
+				MapReduce
+					- multiple parallel map task
+				
+				jdbc - 
+					export	- insert/update statement
 
 
 connection url  jdbc:mysql://quickstart.cloudera:3306/dbname

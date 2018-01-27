@@ -3,6 +3,7 @@
 -- genre, totalNumberofMovies
 
 register '/home/cloudera/classes/hadoop-training-projects/pig/movielens/piggybank-0.16.0.jar';
+
 DEFINE myCSVLoader org.apache.pig.piggybank.storage.CSVLoader();
 DEFINE myXlsStorage org.apache.pig.piggybank.storage.CSVExcelStorage();
 
@@ -20,7 +21,7 @@ agg_data = FOREACH grp_movie_genre GENERATE group as genre, COUNT(movie_genre) a
 sorted = ORDER agg_data BY genre;
 
 
-STORE sorted INTO '/user/cloudera/output/handson_train/movielens/genre-dist-text' USING  PigStorage(); 
+STORE sorted INTO '/user/cloudera/output/handson_train/movielens/genre-dist-text' USING  PigStorage('|'); 
 STORE sorted INTO '/user/cloudera/output/handson_train/movielens/genre-dist-avro' USING  AvroStorage(); 
 STORE sorted INTO '/user/cloudera/output/handson_train/movielens/genre-dist-json' USING  JsonStorage(); 
 STORE sorted INTO '/user/cloudera/output/handson_train/movielens/genre-dist-xls' USING  myXlsStorage(); 

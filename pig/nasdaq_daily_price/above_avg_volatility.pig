@@ -23,7 +23,7 @@
 
 
 --load data
-data = LOAD '/user/cloudera/rawdata/handson_train/nasdaq_daily_prices' USING PigStorage(',') AS (exchange:chararray,stock_symbol:chararray,date:chararray,stock_price_open:float,stock_price_high:float,stock_price_low:float,stock_price_close:float,stock_volume:int,stock_price_adj_close:float);
+data = LOAD '/user/cloudera/rawdata/nasdaq_daily_prices' USING PigStorage(',') AS (exchange:chararray,stock_symbol:chararray,date:chararray,stock_price_open:float,stock_price_high:float,stock_price_low:float,stock_price_close:float,stock_volume:int,stock_price_adj_close:float);
 
 -- remove the header
 clean_data = FILTER data BY date != 'date';
@@ -47,5 +47,5 @@ final_output = FOREACH filtered_joined_data GENERATE clean_data::stock_symbol AS
  as avg_volatility;
 
 --store the final output
-store final_output INTO '/user/cloudera/output/handsontrain/august/above_avg_volatility_avro' USING AvroStorage();
-store final_output INTO '/user/cloudera/output/handsontrain/august/above_avg_volatility_json' USING JsonStorage();
+store final_output INTO '/user/cloudera/output/handson_train/pig/above_avg_volatility_avro' USING AvroStorage();
+store final_output INTO '/user/cloudera/output/handson_train/pig/above_avg_volatility_json' USING JsonStorage();

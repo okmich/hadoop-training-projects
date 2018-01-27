@@ -1,15 +1,16 @@
 pig latin
 	-
 	-	operators (verbs)
-			transformations
-			Actions (STORE, DUMP)
-			Utility
-		functions  (noun)
+			transformations			GROUP BY, FILTER, FLATTEN, FOREACH..GENERATE, ORDER BY, LIMIT, JOIN, COGROUP,
+			Actions (STORE, DUMP)	store, dump
+			Utility					explain, illustrate, describe
+			I/O 					Load, store, dump
+		functions  (noun)			
 		expression and assignments
 
 Pig - Strongly type (Data Types)
 	char
-	chararray
+	chararray 
 	int
 	long
 	float
@@ -25,9 +26,10 @@ Variable (you don't have to initialize)
 
 Every line has to end with a semi colon ;
 
+Lazy evaluation/execution
+
+
 Pig contains three sets to operators 
 	transformations (Plan)
 	Actions
 	Utility
-
-Lazy evaluation/execution

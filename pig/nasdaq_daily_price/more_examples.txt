@@ -9,7 +9,7 @@
 -- stock_price_adj_close
 
 select stock_symbol, sum(stock_volume) total_vol from tablename group by stock_symbol
--- 1) Run the total stock_volume traded for each stock in the entire dataset. Store in a fashion order by total volumn in descending order
+-- 1) Run the total stock_volume traded for each stock in the entire dataset. Store in a fashion order by total volume in descending order
 -- 2) find the record with max volatility for each stock. Volatility is  stock_price_high - stock_price_low
 -- 3) find the average closing price for each stock in the entire dataset
 -- 4) find all the stocks where volatililty was above the avg volatility for the particular stock. Volatility is  stock_price_high - stock_price_low
@@ -39,17 +39,18 @@ STORE sorted_data INTO '/user/okmich20/output/handsontrain/pig/stock_total_volum
 -- 6. from data generate (stock_symbol + volatility) ,......
 -- 7. join records using the new key
 -- 8. retrieve trading rec from joined rec
-data = LOAD '/user/okmich20/rawdata/handson_train/nasdaq_daily_prices' using PigStorage(',') AS (exchange:chararray,stock_symbol:chararray,date:chararray,stock_price_open:float,stock_price_high:float,stock_price_low:float,stock_price_close:float,stock_volume:int,stock_price_adj_close:float);
+
+data = LOAD '/user/cloudera/rawdata/nasdaq_daily_prices' using PigStorage(',') AS (exchange:chararray,stock_symbol:chararray,date:chararray,stock_price_open:float,stock_price_high:float,stock_price_low:float,stock_price_close:float,stock_volume:int,stock_price_adj_close:float);
 wo_header_data = FILTER data BY exchange != 'exchange';
 
 projected_data = FOREACH wo_header_data GENERATE stock_symbol, (stock_price_high - stock_price_low) AS volatility;
+
 grped_vol_data = GROUP projected_data BY stock_symbol;
 reduced_data = FOREACH grped_vol_data GENERATE group as stock_sym, MAX(projected_data.volatility) AS  max_stock_volatility;
 
-projected_data_2 = FOREACH wo_header_data GENERATE CONCAT(stock_symbol, (chararray)(stock_price_high - stock_price_low)) AS key, stock_symbol,date,stock_price_open,stock_price_high,stock_price_low,stock_price_close,stock_volume;
-
-
 proj_red_data = FOREACH reduced_data GENERATE CONCAT(stock_sym, (chararray)max_stock_volatility) AS key;
+
+projected_data_2 = FOREACH wo_header_data GENERATE CONCAT(stock_symbol, (chararray)(stock_price_high - stock_price_low)) AS key, stock_symbol,date,stock_price_open,stock_price_high,stock_price_low,stock_price_close,stock_volume;
 
 jned_proj_data = JOIN projected_data_2 BY key, proj_red_data BY key;
 
@@ -57,7 +58,7 @@ j_data = FOREACH jned_proj_data GENERATE projected_data_2::stock_symbol AS stock
 
 final_data = ORDER j_data BY stock_symbol;
 
-STORE j_data INTO '/user/okmich20/output/handsontrain/pig/max_volatility_rec' USING PigStorage('|');
+STORE j_data INTO '/user/cloudera/output/handson_train/pig/max_volatility_rec' USING PigStorage('|');
 
 
 -- select concat(sym, (high_price - low_price)) key, ...... from nasdaq_daily_prices n

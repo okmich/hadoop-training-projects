@@ -19,3 +19,8 @@ check sales vs online experience
 structured from databases
 join them with
 unstructed from the log files
+
+
+How to run sqoop
+	Entirely commandline driven
+	Some vendor however have built fancy gui over the commandline interface

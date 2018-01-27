@@ -2,13 +2,13 @@
 ## ===============
 
 ## the compulsory generic argument for sqoop
-sqoop  --connect jdbc:mysql://quickstart:3306/world --username root -P
+sqoop --connect jdbc:mysql://quickstart:3306/world --username root -P
 
 ##--sqoop evaluate
 sqoop-eval --connect jdbc:mysql://quickstart.cloudera:3306/ --username root --password cloudera --query "show databases"
 
 ##-- list tables in the particular database
-sqoop-list-tables --connect jdbc:mysql://quickstart:3306/world --username root -P
+sqoop-list-tables --connect jdbc:mysql://quickstart:3306/retail_db --username root -P
 
 ##-- list dabases in the server
 sqoop-list-databases --connect jdbc:mysql://quickstart.cloudera:3306/ --username root --password cloudera
@@ -29,15 +29,22 @@ sqoop-import --connect jdbc:mysql://quickstart.cloudera:3306/world --username ro
 sqoop-import --connect jdbc:mysql://quickstart.cloudera:3306/world --username root  --table city --target-dir /user/cloudera/output/handson_train/may/sqoop/import/city-csv-format -m 1 --fields-terminated-by ',' --enclosed-by "\"" --escaped-by "\\"  -P
 
 ##-- Import table with different format (parquet file) into a single file
-sqoop-import --connect jdbc:mysql://quickstart.cloudera:3306/world --username root  --table city --target-dir /user/cloudera/output/handson_train/may/sqoop/import/city-parquet -m 1 --as-parquetfile -P
+sqoop-import --connect jdbc:mysql://quickstart.cloudera:3306/world --username root  --table city --target-dir /user/cloudera/output/handson_train/may/sqoop/import/city_parquet -m 1 --as-parquetfile -P
 
 
 ##-- Import table with different format (avro file) into a single file
-sqoop-import --connect jdbc:mysql://quickstart.cloudera:3306/world --username root  --table city --target-dir /user/cloudera/output/handson_train/may/sqoop/import/city-avro -m 1 --as-avrodatafile  -P
+sqoop-import --connect jdbc:mysql://quickstart.cloudera:3306/world --username root  --table city --target-dir /user/cloudera/output/handson_train/may/sqoop/import/city_avro -m 1 --as-avrodatafile  -P
+
+
+##-- Import table with different format (sequence file) into a single file
+sqoop-import --connect jdbc:mysql://quickstart.cloudera:3306/world --username root --table city --target-dir /user/cloudera/output/handson_train/may/sqoop/import/city_seq -m 1 --as-sequencefile -P
+
+##-- Import table with different format (text file - compressed) into a single file
+sqoop-import --connect jdbc:mysql://quickstart.cloudera:3306/world --username root --table city --target-dir /user/cloudera/output/handson_train/may/sqoop/import/city_txt_z -m 1 --fields-terminated-by '\0001' -z --compression-codec bzip2 -P
 
 
 ##-- Import table with where clause and avro file 
-sqoop-import --connect jdbc:mysql://quickstart.cloudera:3306/world --username root  --table city --target-dir /user/cloudera/output/handson_train/may/sqoop/import/city-where-population-avro -m 1 --as-avrodatafile --where 'population > 100000'  -P
+sqoop-import --connect jdbc:mysql://quickstart.cloudera:3306/world --username root  --table city --target-dir /user/cloudera/output/handson_train/may/sqoop/import/city-where-population-avro -m 1 --as-avrodatafile --where 'population > 100000'  -P 
 
 
 ##-- Import table with where clause and avro file 

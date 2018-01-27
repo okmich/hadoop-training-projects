@@ -1,4 +1,4 @@
-## cd into the hadoop-training-projects directory
+## cd into the hadoop-training-projects/sqoop/database-scripts directory
 
 # unzip the zip scripts
 unzip world.sql.zip
@@ -8,3 +8,4 @@ mysql -u root -p
 
 -- in mysql shell, execute the command
 source world.sql
+
