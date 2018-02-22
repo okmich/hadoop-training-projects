@@ -1,0 +1,31 @@
+3 ways to load into hive
+	- insert 
+	- load 
+	- CTAS
+
+
+
+
+
+
+-- this insert statement highlights one of the simplest way to convert a 
+-- a file from one format to the other
+insert into daily_prices_avro select * from daily_prices_1;   -- append
+insert overwrite table daily_prices_avro select * from daily_prices_1;  -- deletes and writes
+
+
+-- load
+load data inpath '/user/datadev/hadoop-training/rawdata/stock-prices' into table daily_prices;
+
+load data inpath '/user/datadev/hadoop-training/rawdata/stock-prices' overwrite table daily_prices;
+
+
+-- ctas (create table as select statement)
+
+-- insert into directory
+
+!sh hdfs dfs -rm -R /user/datadev/hadoop-training/output/pig/total_stock_volume
+insert overwrite directory '/user/datadev/hadoop-training/output/pig/total_stock_volume'
+row format delimited 
+fields terminated by '\001'
+select stock_symbol, SUM(stock_volume) total_vol from daily_prices_avro  group by stock_symbol order by total_vol desc;

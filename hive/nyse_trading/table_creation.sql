@@ -1,7 +1,7 @@
 -- create a database for this project
-create database handson_nasdaq --location '/user/okmich20/hive/warehouse/handson_nasdaq';
+create database nasdaq --location '/user/okmich20/hive/warehouse/handson_nasdaq';
 
-use handson_nasdaq;
+use nasdaq;
 
 --Create a managed table for NASDAQ daily prices data set.
 create table tbl_nasdaq_daily_prices (

@@ -1,33 +1,25 @@
-- select movieId, title, count(r.movieId), sum(r.rating), sum(r.rating)/count(r.movieId),
-- least_recent(r.timestamp), most_recent(timestamp)  
-- from movie m join rating r on r.movieId = m.movieId
+register '/opt/pig-0.16.0/lib/piggybank.jar'
+register '/home/datadev/hadoop-training-projects/pig/movielens/datafu-pig-incubating-1.3.1.jar'
 
-register '/home/cloudera/classes/hadoop-training-projects/pig/movielens/piggybank-0.16.0.jar';
-register '/home/cloudera/classes/hadoop-training-projects/pig/movielens/datafu-pig-incubating-1.3.1.jar';
+define csvLoader org.apache.pig.piggybank.storage.CSVLoader;
+define VAR datafu.pig.stats.VAR();
 
-DEFINE myCSVLoader org.apache.pig.piggybank.storage.CSVLoader();
-DEFINE VAR datafu.pig.stats.VAR();
+raw_movies = LOAD '/user/datadev/rawdata/ml-latest/movies' USING csvLoader() as (movieId: long, title:chararray, genres: 
+chararray);
+filtered_movies = FILTER raw_movies BY title != 'title';
+movies = FOREACH filtered_movies GENERATE movieId, title;
 
-raw_movie_full = LOAD '/user/cloudera/rawdata/handson_train/movielens/latest/movies' USING myCSVLoader as (movieId: chararray,title: chararray, genres: chararray);
+raw_ratings = LOAD '/user/datadev/rawdata/ml-latest/ratings' USING PigStorage(',') as (userId: long, movieId: long, rating:float, ts:long);
 
-raw_movie = FILTER raw_movie_full BY (movieId != 'movieId');
+filtered_ratings = FILTER raw_ratings BY userId is not null;
+ratings = FOREACH filtered_ratings GENERATE movieId, rating, ToDate(ts * 1000) AS rating_dt;
 
-mv_ds = FOREACH raw_movie GENERATE (long)movieId, title;
+grouped_ratings = GROUP ratings BY movieId;
+agg_ratings = FOREACH grouped_ratings GENERATE group as movieId, COUNT(ratings.rating) as no_ratings, SUM(ratings.rating) as total_ratings, AVG(ratings.rating) as avg_ratings, VAR(ratings.rating) as var_ratings, MIN(ratings.rating_dt) AS earliest, MAX(ratings.rating_dt) as latest;
 
+j_movie_rating = JOIN movies BY movieId LEFT, agg_ratings BY movieId;
 
-raw_rating_full = LOAD '/user/cloudera/rawdata/handson_train/movielens/latest/ratings' USING PigStorage(',') AS (userId: chararray, movieId: chararray, rating: chararray, timestamp: chararray);
+movie_summary = FOREACH j_movie_rating GENERATE movies::movieId AS movieId, movies::title as title, agg_ratings::no_ratings as no_ratings, agg_ratings::total_ratings as total_ratings, agg_ratings::avg_ratings as avg_ratings, agg_ratings::var_ratings as var_ratings, agg_ratings::earliest as earliest, agg_ratings::latest as latest;
 
-
-raw_rating = FILTER raw_rating_full BY (movieId != 'movieId');
-
-rating_ds = FOREACH raw_rating GENERATE (long)movieId, (float)rating;
-
-rtng_grp = GROUP rating_ds BY movieId;
-
-mv_rtn_ds = FOREACH rtng_grp GENERATE group as movieId, COUNT(rating_ds.movieId) as rating_cnt,  SUM(rating_ds.rating) as rating_total,  AVG(rating_ds.rating) as rating_avg, VAR(rating_ds.rating) as rating_variance;	
-
-join_ds = JOIN mv_ds BY movieId LEFT OUTER, mv_rtn_ds BY movieId;
-
-all_ds = FOREACH join_ds GENERATE mv_ds::movieId AS movieId, mv_ds::title AS title, mv_rtn_ds::rating_cnt AS cnt_rating, mv_rtn_ds::rating_total AS total_rating, mv_rtn_ds::rating_avg AS avg_rating, mv_rtn_ds::rating_variance AS var_rating;
-
-STORE all_ds INTO '/user/cloudera/output/handson_train/movielens/movies_rating_analysis';
+STORE movie_summary INTO '/user/datadev/hadoop-training/output/pig/movie_summary_pipe' using PigStorage('|');
+STORE movie_summary INTO '/user/datadev/hadoop-training/output/pig/movie_summary_avro' using AvroStorage();

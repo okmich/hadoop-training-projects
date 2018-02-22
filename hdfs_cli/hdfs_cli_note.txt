@@ -1,0 +1,73 @@
+-- the default home dir
+	/user/<user_name>
+
+-- make directory
+	hadoop-training in your home directory
+			hdfs dfs -mkdir ./hadoop-training
+			hdfs dfs -mkdir /user/datadev/hadoop-training
+			hdfs dfs -mkdir hdfs://localhost:9000/user/datadev/hadoop-training
+
+	hadoop-training/rawdata/stock-data 
+			hdfs dfs -mkdir -p ./hadoop-training/rawdata/stock-data 
+
+-- list content of directory
+	to list the content of your home directory
+			hdfs dfs -ls .
+	to recursively list of content of any directory such as the root directory
+			hdfs dfs -lsr /
+			hdfs dfs -ls -R /
+
+	to show the size of the files in a human readable form, add the -h argument
+			hdfs dfs -lsr -h /
+
+-- delete directory
+	# to delete the folder to trash
+			hdfs dfs -rm -R ./hadoop-training
+	# to permanently delete the folder and skip trash
+			hdfs dfs -rm -R -skipTrash ./hadoop-training
+
+-- rename/move directory
+	hdfs dfs -mv ./hadoop-training/rawdata/stock-data ./hadoop-training/stock-data
+
+-- download a file for this exercise
+wget https://raw.githubusercontent.com/okmich/hadoop-training-projects/master/datasets/nyse_dividends/NASDAQ_dividends_A.csv
+
+wget https://raw.githubusercontent.com/okmich/hadoop-training-projects/master/datasets/nyse_dividends/NASDAQ_dividends_C.csv
+
+-- upload file into directory
+
+	-- copy
+			hdfs dfs -copyFromLocal NASDAQ_dividends_A.csv ./hadoop-training/rawdata/stock-data
+			hdfs dfs -put NASDAQ_dividends_C.csv ./hadoop-training/rawdata/stock-data
+	-- move
+			hdfs dfs -moveFromLocal NASDAQ_dividends_A.csv ./hadoop-training/stock-data
+
+-- rename/move file
+			hdfs dfs -mv hadoop-training/rawdata/NASDAQ_dividends_A.csv hadoop-training/rawdata/NASDAQ_dividends_K.csv
+
+-- copy files across directories
+			hdfs dfs -cp hadoop-training/stock-data/NASDAQ_dividends_A.csv hadoop-training/rawdata/
+
+-- sets permission on files
+	to set permission on a folder to only be accessible 
+			hdfs dfs -chmod 700 ./hadoop-training
+
+-- Download a file from distributed filesystem
+		- hdfs dfs -get hadoop-training/rawdata/stock-data/NASDAQ_dividends_A.csv ~/
+		-hdfs dfs -copyToLocal hadoop-training/rawdata/stock-data/NASDAQ_dividends_A.csv ~/
+
+-- view content of a text file
+		- hdfs dfs -cat hadoop-training/rawdata/stock-data/NASDAQ_dividends_A.csv
+		- hdfs dfs -tail hadoop-training/rawdata/stock-data/NASDAQ_dividends_A.csv
+
+		
+-- delete file 
+			hdfs dfs -rm ./hadoop-training/rawdata/NASDAQ_dividends_K.csv
+			hdfs dfs -rm -skipTrash ./hadoop-training/rawdata/NASDAQ_dividends_K.csv
+
+-- deal with recycle bin
+	hdfs trash is usually a .Trash folder in your hdfs home
+
+	#to empty your hdfs recycle bin
+
+		hdfs dfs -expunge
